@@ -1,57 +1,34 @@
 #include <stdio.h>
-#include <assert.h>
+#include <stdlib.h> // чтобы работал qsort
 #define N 100
-
-struct _Decimal {
-	char a[N]; // number is a[0]*10^0 + a[1]*10^1 + ..+ a[n]*10^n
-	unsigned int n; // наибольшая степень десяти
-};
-typedef struct _Decimal Decimal;
-
-Decimal add (Decimal a, Decimal b)
-{
-	Decimal res = {};
-	unsigned int z;
-	if ( a.n > b.n )
-		z = a.n;
-	else
-		z = b.n;
-	//printf("%d", z);
-	int i;
-	res.a[0]=0;
-
-	for ( i=0; i<z; i++)
-	{
-		res.a[i] = res.a[i]+a.a[i]+b.a[i];
-		if (res.a[i]>9)
-		{
-			res.a[i]=res.a[i]-10;
-			res.a[i+1]=1;
-		}
-	}
-	res.n = z;
-	return res;
+// 0 if x==y
+// <0 if x<y
+// >0 if x>y
+// определение функции сравнения для массива int'ов
+int cmp_int(const void * p1, const void * p2) {
+	int x = *(int *)p1; // добываем из указателя значение по этому указателю
+	int y = *(int *)p2; // добываем из указателя значение по этому указателю
+	return x-y;
 }
-
-void print (Decimal p){
+void print(int a[], int n) {
 	int i;
-	
-	for (i=0; i <= p.n ; i++)
-	{
-		printf("%d", p.a[p.n-i]);
-	}
-}
-
-int main(){
-	Decimal a = {{7, 4, 1}, 2}; // set number 147
-	Decimal b = {{3, 1}, 1}; // set number 13
-	Decimal res;
-	
-	res = add(a, b); // res = a+b = 147+13 = 160
-	
-	print(res); // print 160
-	
+	for (i = 0; i<n; i++)
+	printf("%d ", a[i]);
 	printf("\n");
+}
+int main()
+{
 
-return 0;
+	int n;
+	scanf ("%d", &n);
+	int i;
+	int a[N];
+	for (i=0; i<n; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	print(a, n);
+	qsort(a, n, sizeof(int), cmp_int); // сортировка массива a
+	print(a, n);
+	return 0;
 }
