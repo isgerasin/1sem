@@ -184,14 +184,17 @@ int TreeElem_dump_dot( TreeElem_t* elem, FILE* out )
     if ( elem->left != NULL )
     {
 		if ( elem->t == oper && elem->left->t == constant )
-			fprintf( out, "\t\"%c\"->\"%lg\"\n", ( char ) elem->data, elem->left->data );
-		else if ( elem->t == oper  && elem->left->t == oper )
-			fprintf( out, "\t\"%c\"->\"%c\"\n", ( char ) elem->data, ( char ) elem->left->data );
-		else if ( elem->t == oper  && elem->left->t == val )
+			fprintf( out, "\t\"%c\n[%X]\"->\"%lg\n[%X]\"\n",
+			( char ) elem->data, elem, elem->left->data, elem->left);
+		else if ( elem->t == oper && elem->left->t == oper )
+			fprintf( out, "\t\"%c\n[%X]\"->\"%c\n[%X]\"\n",
+			( char ) elem->data, elem, ( char ) elem->left->data, elem->left );
+		else if ( elem->t == oper && elem->left->t == val )
 		{
-			fprintf( out, "\t\"%c\"->\"%s\"\n", ( char ) elem->data,
-			array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->left->data].name );
-			//printf( "%d %s\n", ( int ) elem->right->data, array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->right->data].name );
+			fprintf( out, "\t\"%c\n[%X]\"->\"%s\n[%X]\"\n",
+			( char ) elem->data, elem,
+			array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->left->data].name, elem->left );
+			//printf( "%d %s\n", ( int ) elem->left->data, array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->left->data].name );
 		}
 		else 
 			return FALSE;
@@ -201,13 +204,16 @@ int TreeElem_dump_dot( TreeElem_t* elem, FILE* out )
      if ( elem->right != NULL )
     {
 		if ( elem->t == oper && elem->right->t == constant )
-			fprintf( out, "\t\"%c\"->\"%lg\"\n", ( char ) elem->data, elem->right->data );
+			fprintf( out, "\t\"%c\n[%X]\"->\"%lg\n[%X]\"\n",
+			( char ) elem->data, elem, elem->right->data, elem->right);
 		else if ( elem->t == oper && elem->right->t == oper )
-			fprintf( out, "\t\"%c\"->\"%c\"\n", ( char ) elem->data, ( char ) elem->right->data );
+			fprintf( out, "\t\"%c\n[%X]\"->\"%c\n[%X]\"\n",
+			( char ) elem->data, elem, ( char ) elem->right->data, elem->right );
 		else if ( elem->t == oper && elem->right->t == val )
 		{
-			fprintf( out, "\t\"%c\"->\"%s\"\n", ( char ) elem->data,
-			array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->right->data].name );
+			fprintf( out, "\t\"%c\n[%X]\"->\"%s\n[%X]\"\n",
+			( char ) elem->data, elem,
+			array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->right->data].name, elem->right );
 			//printf( "%d %s\n", ( int ) elem->right->data, array_of_variable_for_Tree_using_only_in_Var_search[ ( int ) elem->right->data].name );
 		}
 		else 
