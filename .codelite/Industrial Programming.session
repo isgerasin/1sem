@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Industrial Programming.workspace">
-  <int Value="2" Name="m_selectedTab"/>
+  <int Value="4" Name="m_selectedTab"/>
   <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Industrial Programming.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Head.h" Name="FileName"/>
       <int Value="13" Name="FirstVisibleLine"/>
-      <int Value="17" Name="CurrentLine"/>
+      <int Value="26" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Tree.c" Name="FileName"/>
-      <int Value="284" Name="FirstVisibleLine"/>
+      <int Value="292" Name="FirstVisibleLine"/>
       <int Value="293" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks">
         <wxString Value="290:3"/>
@@ -21,7 +21,7 @@
     </TabInfo>
     <TabInfo>
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/main.c" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="10" Name="FirstVisibleLine"/>
       <int Value="8" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
@@ -30,6 +30,13 @@
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Tree.cpp" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Hello/main.c" Name="FileName"/>
+      <int Value="18" Name="FirstVisibleLine"/>
+      <int Value="12" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

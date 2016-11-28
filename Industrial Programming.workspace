@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="Industrial Programming" Database="">
-  <Project Name="Hello" Path="Hello/Hello.project" Active="Yes"/>
+  <Project Name="Hello" Path="Hello/Hello.project" Active="No"/>
   <Project Name="SolvesSquare" Path="SolvesSquare/SolvesSquare.project" Active="No"/>
   <Project Name="Pictures" Path="Pictures/Pictures.project" Active="No"/>
   <Project Name="StringsCopy" Path="Onegin/Onegin.project" Active="No"/>
@@ -15,7 +15,7 @@
   <Project Name="List" Path="List/List.project" Active="No"/>
   <Project Name="Akinator" Path="Akinator/Akinator.project" Active="No"/>
   <Project Name="Down" Path="../INDPROG/Down/Down.project" Active="No"/>
-  <Project Name="Differ" Path="Differ/Differ.project" Active="No"/>
+  <Project Name="Differ" Path="Differ/Differ.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>

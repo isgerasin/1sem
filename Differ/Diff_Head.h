@@ -6,7 +6,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define DBG 
+//#define DBG 
 
 #ifdef DBG
     #define ASSERT_OK( wat, strct ) \
@@ -60,4 +60,60 @@ struct TreeList_t
 };
 
 
+int File_Len( FILE* fl1 );
 
+int TreeElem_ok(   TreeElem_t* telem );
+
+int TreeElem_dump( TreeElem_t* telem );
+
+TreeElem_t* TreeElem_ctor( TreeElem_t* telem, const char* data );
+
+int TreeElem_dtor( TreeElem_t* telem );
+
+TreeElem_t* TreeElem_ctor_sub( TreeElem_t* telem, const char* str, TreeElem_t* sub, const char* side );
+
+int TreeElem_dtor_sub( TreeElem_t* telem );
+
+int TreeList_ctor( TreeList_t* tlist, const char* str );
+
+int TreeList_dtor( TreeList_t* tlist );
+
+int Tree_ok( TreeElem_t* telem );
+
+int TreeList_ok( TreeList_t* tlist );
+
+int TreeElem_dump_dot( TreeElem_t* elem, FILE* out );
+
+int TreeList_dump( TreeList_t* tlist );
+
+int TreeList_dump_dot( TreeList_t* tlist );
+
+char TreeElem_search( TreeElem_t* elem, TreeElem_t* what );
+
+int TreeElem_write_pre( TreeElem_t* elem, FILE* out );
+
+int TreeElem_Type_Write( TreeElem_t* elem, const char* tmp );
+
+int Var_search( const char* tmp );
+
+int TreeElem_read_pre(  TreeElem_t* elem );
+
+int TreeList_write_pre( TreeList_t* tlist, const char* fname );
+
+int TreeList_read_pre( TreeList_t* tlist, const char* fname );
+
+int TreeList_write_in( TreeList_t* tlist, const char* fname );
+
+int TreeElem_write_in( TreeElem_t* elem, FILE* out );
+
+int TreeElem_read_in(  TreeElem_t* elem );
+
+int TreeList_read_in( TreeList_t* tlist, const char* fname );
+
+int TreeElem_dump_tex(  TreeElem_t* elem, FILE* out );
+
+int TreeList_dump_tex(  TreeList_t* tlist );
+
+TreeElem_t* TreeElem_cpy_sub( TreeElem_t* elem );
+
+TreeList_t* TreeList_cpy_sub( TreeList_t* list );

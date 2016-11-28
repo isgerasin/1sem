@@ -1,0 +1,8 @@
+digraph Tree
+{
+	node[shape = polygon]; edge[dir=both];
+	"*"->"+"
+	"+"->"x"
+	"+"->"3"
+	"*"->"4"
+}
