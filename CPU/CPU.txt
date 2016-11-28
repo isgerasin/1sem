@@ -1,0 +1,1 @@
+./Debug/main.cpp.o ./Debug/Stack.cpp.o ./Debug/Ass_Disass.cpp.o   

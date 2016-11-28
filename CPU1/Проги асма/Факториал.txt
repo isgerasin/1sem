@@ -1,0 +1,29 @@
+nop
+in
+call fact
+out
+end
+
+:fact
+:fact2
+push 1
+je one
+pop
+popr ax
+pushr ax
+pushr ax
+push 1
+sub
+je two
+call fact2
+mul
+ret
+
+:one
+:two
+nop
+pop
+ret
+end
+
+

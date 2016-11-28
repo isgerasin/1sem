@@ -1,0 +1,38 @@
+push 10
+pushr 11
+jmp 12
+mul
+sub
+in
+pop
+add
+end
+push 10
+pushr 11
+jmp 12
+mul
+sub
+in
+pop
+add
+end
+push 10
+pushr 11
+jmp 12
+mul
+sub
+in
+pop
+add
+end
+push 10
+pushr 11
+jmp 12
+mul
+sub
+in
+pop
+add
+end
+
+

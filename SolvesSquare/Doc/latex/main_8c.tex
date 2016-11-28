@@ -1,0 +1,124 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+
+
+Solves square.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8c_a42e1c78c735eb0bb73e6239047ca34a1}{Is\+Zero} (double a)
+\item 
+int \hyperlink{main_8c_a823a308c64fe4fc5cd348df0e316ee54}{Solve\+Liner} (double b, double c, double $\ast$x1)
+\item 
+int \hyperlink{main_8c_ab2dd9b24e0e487efdd1cd1f40dd3a023}{Solve\+Square} (double a, double b, double c, double $\ast$x1, double $\ast$x2)
+\item 
+int \hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{main_8c_a35edd79502e9fd1c58eb07a2ad3f4d0a}{S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS} = -\/1
+\begin{DoxyCompactList}\small\item\em This is varible for designation infinity roots. \end{DoxyCompactList}\item 
+const double \hyperlink{main_8c_afe01386a82fedc016455a43c20280a97}{E\+PS} =1\+E-\/6
+\begin{DoxyCompactList}\small\item\em This is varible for mistakes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Solves square. 
+
+\begin{DoxyAuthor}{Author}
+N\+S\+RG 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+The program can equation liner and solves squere 
+
+\subsection{Function Documentation}
+\index{main.\+c@{main.\+c}!Is\+Zero@{Is\+Zero}}
+\index{Is\+Zero@{Is\+Zero}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{Is\+Zero(double a)}{IsZero(double a)}}]{\setlength{\rightskip}{0pt plus 5cm}int Is\+Zero (
+\begin{DoxyParamCaption}
+\item[{double}]{a}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a42e1c78c735eb0bb73e6239047ca34a1}{}\label{main_8c_a42e1c78c735eb0bb73e6239047ca34a1}
+The function compares the number with zero, with an error 
+\begin{DoxyParams}{Parameters}
+{\em a} & real numbers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false 
+\end{DoxyReturn}
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}
+The function scans coefficients and prints root \begin{DoxyReturn}{Returns}
+0 if programm print roots 
+\end{DoxyReturn}
+\index{main.\+c@{main.\+c}!Solve\+Liner@{Solve\+Liner}}
+\index{Solve\+Liner@{Solve\+Liner}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{Solve\+Liner(double b, double c, double $\ast$x1)}{SolveLiner(double b, double c, double *x1)}}]{\setlength{\rightskip}{0pt plus 5cm}int Solve\+Liner (
+\begin{DoxyParamCaption}
+\item[{double}]{b, }
+\item[{double}]{c, }
+\item[{double $\ast$}]{x1}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a823a308c64fe4fc5cd348df0e316ee54}{}\label{main_8c_a823a308c64fe4fc5cd348df0e316ee54}
+The function solves linear equation 
+\begin{DoxyParams}{Parameters}
+{\em b,c} & coefficients of the equation \\
+\hline
+{\em x1} & variable for root \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+numbers of solutions(-\/1 infinity roots) 
+\end{DoxyReturn}
+\index{main.\+c@{main.\+c}!Solve\+Square@{Solve\+Square}}
+\index{Solve\+Square@{Solve\+Square}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{Solve\+Square(double a, double b, double c, double $\ast$x1, double $\ast$x2)}{SolveSquare(double a, double b, double c, double *x1, double *x2)}}]{\setlength{\rightskip}{0pt plus 5cm}int Solve\+Square (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{double}]{c, }
+\item[{double $\ast$}]{x1, }
+\item[{double $\ast$}]{x2}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_ab2dd9b24e0e487efdd1cd1f40dd3a023}{}\label{main_8c_ab2dd9b24e0e487efdd1cd1f40dd3a023}
+The function solves square equation 
+\begin{DoxyParams}{Parameters}
+{\em a,b,c} & coefficients of the equation \\
+\hline
+{\em x1,x2} & variable for root \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+numbers of solutions(-\/1 infinity roots) 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\index{main.\+c@{main.\+c}!E\+PS@{E\+PS}}
+\index{E\+PS@{E\+PS}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{E\+PS}{EPS}}]{\setlength{\rightskip}{0pt plus 5cm}const double E\+PS =1\+E-\/6}\hypertarget{main_8c_afe01386a82fedc016455a43c20280a97}{}\label{main_8c_afe01386a82fedc016455a43c20280a97}
+
+
+This is varible for mistakes. 
+
+\index{main.\+c@{main.\+c}!S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS@{S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS}}
+\index{S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS@{S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS}{SS_INF_ROOTS}}]{\setlength{\rightskip}{0pt plus 5cm}const int S\+S\+\_\+\+I\+N\+F\+\_\+\+R\+O\+O\+TS = -\/1}\hypertarget{main_8c_a35edd79502e9fd1c58eb07a2ad3f4d0a}{}\label{main_8c_a35edd79502e9fd1c58eb07a2ad3f4d0a}
+
+
+This is varible for designation infinity roots. 
+

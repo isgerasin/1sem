@@ -1,0 +1,48 @@
+:beg1
+:beg2
+in 
+popr ax
+in
+popr bx
+in
+popr cx
+pushr bx
+pushr bx
+mul
+push 4
+pushr ax
+mul
+pushr cx
+mul
+sub
+push 0
+jae rt
+jmp beg2
+end
+
+:rt
+pop
+sqrt
+popr dx
+push 0
+pushr bx
+sub
+pushr dx
+sub
+push 2
+div
+pushr ax
+div
+out
+push 0
+pushr bx
+sub
+pushr dx
+add
+push 2
+div
+pushr ax
+div
+out
+jmp beg1
+end

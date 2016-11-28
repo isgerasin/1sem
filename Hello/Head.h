@@ -1,0 +1,3 @@
+
+DEF_CMD(ADD, 10)
+DEF_CMD(MUL, 11)

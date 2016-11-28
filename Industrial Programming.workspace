@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Industrial Programming" Database="">
+  <Project Name="Hello" Path="Hello/Hello.project" Active="No"/>
+  <Project Name="SolvesSquare" Path="SolvesSquare/SolvesSquare.project" Active="No"/>
+  <Project Name="Pictures" Path="Pictures/Pictures.project" Active="No"/>
+  <Project Name="StringsCopy" Path="Onegin/Onegin.project" Active="No"/>
+  <Project Name="StrSort" Path="StrSort/StrSort.project" Active="No"/>
+  <Project Name="RhymeRef" Path="RhymeRef/RhymeRef.project" Active="No"/>
+  <Project Name="Rhyme_Sort" Path="Rhyme_Sort/Rhyme_Sort.project" Active="No"/>
+  <Project Name="Str_Std" Path="Str_Std/Str_Std.project" Active="No"/>
+  <Project Name="Stack_Func" Path="Stack_Func/Stack_Func.project" Active="No"/>
+  <Project Name="CPU" Path="CPU/CPU.project" Active="No"/>
+  <Project Name="OpenGL" Path="OpenGL/OpenGL.project" Active="No"/>
+  <Project Name="CPU1" Path="CPU1/CPU1.project" Active="No"/>
+  <Project Name="List" Path="List/List.project" Active="No"/>
+  <Project Name="Akinator" Path="Akinator/Akinator.project" Active="No"/>
+  <Project Name="Down" Path="../INDPROG/Down/Down.project" Active="No"/>
+  <Project Name="Differ" Path="Differ/Differ.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="SolveSquare" ConfigName="Debug"/>
+      <Project Name="Hello" ConfigName="Debug"/>
+      <Project Name="SolvesSquare" ConfigName="Debug"/>
+      <Project Name="Pictures" ConfigName="Debug"/>
+      <Project Name="StringsCopy" ConfigName="Debug"/>
+      <Project Name="StrSort" ConfigName="Debug"/>
+      <Project Name="RhymeRef" ConfigName="Debug"/>
+      <Project Name="Rhyme_Sort" ConfigName="Debug"/>
+      <Project Name="Str_Std" ConfigName="Debug"/>
+      <Project Name="Stack_Func" ConfigName="Debug"/>
+      <Project Name="CPU" ConfigName="Debug"/>
+      <Project Name="OpenGL" ConfigName="Debug"/>
+      <Project Name="CPU1" ConfigName="Debug"/>
+      <Project Name="List" ConfigName="Debug"/>
+      <Project Name="Akinator" ConfigName="Debug"/>
+      <Project Name="Down" ConfigName="Debug"/>
+      <Project Name="Differ" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="SolveSquare" ConfigName="Release"/>
+      <Project Name="Hello" ConfigName="Release"/>
+      <Project Name="SolvesSquare" ConfigName="Release"/>
+      <Project Name="Pictures" ConfigName="Release"/>
+      <Project Name="StringsCopy" ConfigName="Release"/>
+      <Project Name="StrSort" ConfigName="Release"/>
+      <Project Name="RhymeRef" ConfigName="Release"/>
+      <Project Name="Rhyme_Sort" ConfigName="Release"/>
+      <Project Name="Str_Std" ConfigName="Release"/>
+      <Project Name="Stack_Func" ConfigName="Release"/>
+      <Project Name="CPU" ConfigName="Release"/>
+      <Project Name="OpenGL" ConfigName="Release"/>
+      <Project Name="CPU1" ConfigName="Release"/>
+      <Project Name="List" ConfigName="Release"/>
+      <Project Name="Akinator" ConfigName="Release"/>
+      <Project Name="Down" ConfigName="Release"/>
+      <Project Name="Differ" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
