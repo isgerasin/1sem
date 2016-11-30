@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Industrial Programming.workspace">
-  <int Value="1" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Industrial Programming.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Head.h" Name="FileName"/>
-      <int Value="26" Name="FirstVisibleLine"/>
-      <int Value="26" Name="CurrentLine"/>
+      <int Value="108" Name="FirstVisibleLine"/>
+      <int Value="121" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Tree.c" Name="FileName"/>
-      <int Value="54" Name="FirstVisibleLine"/>
-      <int Value="185" Name="CurrentLine"/>
+      <int Value="227" Name="FirstVisibleLine"/>
+      <int Value="764" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks">
-        <wxString Value="297:3"/>
+        <wxString Value="295:3"/>
       </wxArrayString>
       <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="8"/>
-        <IntVectorItem Value="20"/>
-        <IntVectorItem Value="30"/>
-        <IntVectorItem Value="38"/>
-        <IntVectorItem Value="61"/>
-        <IntVectorItem Value="80"/>
-        <IntVectorItem Value="94"/>
-        <IntVectorItem Value="110"/>
-        <IntVectorItem Value="127"/>
-        <IntVectorItem Value="145"/>
-        <IntVectorItem Value="160"/>
-        <IntVectorItem Value="168"/>
-        <IntVectorItem Value="227"/>
-        <IntVectorItem Value="232"/>
-        <IntVectorItem Value="271"/>
-        <IntVectorItem Value="282"/>
-        <IntVectorItem Value="312"/>
-        <IntVectorItem Value="345"/>
-        <IntVectorItem Value="359"/>
-        <IntVectorItem Value="398"/>
-        <IntVectorItem Value="418"/>
-        <IntVectorItem Value="455"/>
-        <IntVectorItem Value="475"/>
-        <IntVectorItem Value="510"/>
-        <IntVectorItem Value="547"/>
-        <IntVectorItem Value="583"/>
-        <IntVectorItem Value="616"/>
-        <IntVectorItem Value="655"/>
-        <IntVectorItem Value="688"/>
+        <IntVectorItem Value="3"/>
+        <IntVectorItem Value="15"/>
+        <IntVectorItem Value="25"/>
+        <IntVectorItem Value="33"/>
+        <IntVectorItem Value="56"/>
+        <IntVectorItem Value="89"/>
+        <IntVectorItem Value="123"/>
+        <IntVectorItem Value="141"/>
+        <IntVectorItem Value="158"/>
+        <IntVectorItem Value="166"/>
+        <IntVectorItem Value="177"/>
+        <IntVectorItem Value="225"/>
+        <IntVectorItem Value="230"/>
+        <IntVectorItem Value="269"/>
+        <IntVectorItem Value="280"/>
+        <IntVectorItem Value="310"/>
+        <IntVectorItem Value="343"/>
+        <IntVectorItem Value="357"/>
+        <IntVectorItem Value="396"/>
+        <IntVectorItem Value="416"/>
+        <IntVectorItem Value="453"/>
+        <IntVectorItem Value="473"/>
+        <IntVectorItem Value="508"/>
+        <IntVectorItem Value="545"/>
+        <IntVectorItem Value="665"/>
+        <IntVectorItem Value="698"/>
       </IntVector>
     </TabInfo>
     <TabInfo>
       <wxString Value="/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/main.c" Name="FileName"/>
-      <int Value="9" Name="FirstVisibleLine"/>
-      <int Value="24" Name="CurrentLine"/>
+      <int Value="44" Name="FirstVisibleLine"/>
+      <int Value="42" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

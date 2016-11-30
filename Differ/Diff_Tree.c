@@ -1,10 +1,5 @@
 #include "Diff_Head.h"
 
-#define CANARY 0XABBAABBA
-#define MAXVAL 100
-#define MAXNAME 100
-#define TFORMAT "v2.0Trsv"
-
 struct Variable_t
 {
 	char name[MAXNAME];
@@ -118,8 +113,9 @@ int TreeElem_dtor_sub( TreeElem_t* telem )
         TreeElem_dtor_sub( telem->right );
     if ( telem->left != NULL )
         TreeElem_dtor_sub( telem->left );
+
     TreeElem_dtor( telem );
-    
+
 	ASSERT_OK( TreeElem, telem );
     return TRUE;
 }
@@ -130,13 +126,13 @@ int TreeList_ctor( TreeList_t* tlist, const char* str )
     if ( tlist == NULL )return FALSE;
 	
 	
-	
     tlist->cnra = CANARY;
     tlist->cnrb = CANARY;
     tlist->count = 1;
 
-    TreeElem_ctor( &tlist->head, str );
-    tlist->head.parent = &tlist->head;
+	tlist->head = New_Tree_elem( str, NULL, NULL );
+	
+    tlist->head->parent = tlist->head;
 	
 	ASSERT_OK( TreeList, tlist );
     return TRUE;
@@ -146,13 +142,15 @@ int TreeList_dtor( TreeList_t* tlist )
 {
 	ASSERT_OK( TreeList, tlist );
     if ( tlist == NULL ) return FALSE;
-
+	
     
     tlist->cnra = 0;
     tlist->cnrb = 0;
     tlist->count = -1;
-    TreeElem_dtor_sub( tlist->head.right );
-	TreeElem_dtor_sub( tlist->head.left );
+	
+    TreeElem_dtor_sub( tlist->head->right );
+	TreeElem_dtor_sub( tlist->head->left );
+	
     
     return TRUE;
 }
@@ -246,7 +244,7 @@ int TreeList_dump_dot( TreeList_t* tlist )
     
     fprintf( out, "digraph Tree\n{\n\tnode[shape = polygon]; edge[dir=both];\n" );
     
-    if ( TreeElem_dump_dot( &tlist->head, out ) == FALSE )
+    if ( TreeElem_dump_dot( tlist->head, out ) == FALSE )
 	{
 		
 		fprintf( out, "}" );
@@ -319,22 +317,26 @@ int TreeElem_Type_Write( TreeElem_t* elem, const char* tmp )
 	{
 		elem->t = constant;
 		elem->data = ( Tree_Type ) atof( tmp );
+		elem->str = tmp;
 	}
-	else if ( tmp[0] == sub || tmp[0] == add || tmp[0] == mul || tmp[0] == divv  )
+	else if ( tmp[0] == sub || tmp[0] == add || tmp[0] == mul || tmp[0] == divv || tmp[0] == pow )
 	{
 		elem->t = oper;
 		elem->data = ( Tree_Type ) tmp[0];
+		elem->str = tmp;
 		//printf( "%c ", ( char ) elem->data );
 	}
 	else if ( 'A' <= tmp[0] && tmp[0] <= 'z')
 	{
 		elem->t = val;
 		elem->data = ( Tree_Type ) Var_search( tmp );
+		elem->str = tmp;
 	}
 	else 
 	{
 		elem->t = unformat;
 		elem->data = ( Tree_Type ) 0;
+		elem->str = tmp;
 	}
 	
 	return ( int ) elem->t;
@@ -570,7 +572,7 @@ int TreeList_read_in( TreeList_t* tlist, const char* fname )
         return FALSE;
     }
     else
-        if ( !TreeElem_read_in( &tlist->head ) )
+        if ( !TreeElem_read_in( tlist->head ) )
         {
             
             printf( "Error! Can't read the file %s\n", fname );
@@ -585,7 +587,9 @@ int TreeElem_dump_tex(  TreeElem_t* elem, FILE* out )
 	if ( elem == NULL || out == NULL ) return FALSE;
 	ASSERT_OK( TreeElem, elem );
 	
-	if ( elem->t == oper )
+	if ( ( char ) elem->data == '/' )
+		fprintf( out, "\\frac{ ");
+	else if ( elem->t == oper )
 		fprintf( out, "( " );
     
     if ( elem->left != NULL )
@@ -593,8 +597,9 @@ int TreeElem_dump_tex(  TreeElem_t* elem, FILE* out )
 			return FALSE;
 			
 	//printf( " %lg %d\n", elem->data, elem->t );
-	
-	if ( elem->t == constant || elem->t == unformat )
+	if ( ( char ) elem->data == '/' )
+		fprintf( out, "}{");
+	else if ( elem->t == constant || elem->t == unformat )
 		fprintf( out, "%lg ", elem->data );
 	else if ( elem->t == oper )
 		fprintf( out, "%c ",  ( char ) elem->data );
@@ -602,18 +607,23 @@ int TreeElem_dump_tex(  TreeElem_t* elem, FILE* out )
 		fprintf( out, "%s ",  array_of_variable_for_Tree_using_only_in_Var_search[( int ) elem->data].name );
 	
 	
+	
     if ( elem->right != NULL )
         if ( TreeElem_dump_tex( elem->right, out ) == FALSE )
 			return FALSE;
     
-	if ( elem->t == oper )
+	if ( ( char ) elem->data == '/' )
+		fprintf( out, "}");
+	else if ( elem->t == oper )
 		fprintf( out, ") " );
+		
+		
 		
 	ASSERT_OK( TreeElem, elem );
 	return TRUE;
 }
 
-int TreeList_dump_tex(  TreeList_t* tlist )
+int TreeList_dump_tex(  TreeList_t* tlist, TreeList_t* tlistb )
 {
 	if ( tlist == NULL ) return FALSE;
 	ASSERT_OK( TreeList, tlist );
@@ -630,13 +640,25 @@ int TreeList_dump_tex(  TreeList_t* tlist )
 	
 	fprintf( fl, "\\documentclass{article}\n\\begin{document}\n$" );
 	
-	if ( TreeElem_dump_tex( &tlist->head, fl ) == FALSE )
+	if ( TreeElem_dump_tex( tlist->head, fl ) == FALSE )
 	{
 		printf( "Error! Can't write tree in file!\n" );
 		return FALSE;
 	}
 	
+	if ( tlistb != NULL )
+	{
+		fprintf( fl,"$\n\n$" );
+		if ( TreeElem_dump_tex( tlistb->head, fl ) == FALSE )
+		{
+			printf( "Error! Can't write tree in file!\n" );
+			return FALSE;
+		}
+	}
+	
 	fprintf( fl, "$\n\\end{document}" );
+	
+	
 	
 	fclose( fl );
 	
@@ -692,15 +714,18 @@ TreeList_t* TreeList_cpy_sub( TreeList_t* list )
 	
 	TreeList_t* tlist = ( TreeElem_t* ) calloc( 1, sizeof ( *tlist ) );
 	
-	TreeList_ctor( tlist, "1" );
-	tlist->head.data = list->head.data;
-	tlist->head.t = list->head.t;
+	TreeList_ctor( tlist, "0" );
 	
-	if ( ( tlist->head.right = TreeElem_cpy_sub( list->head.right ) ) != NULL )
-		list->head.right->parent = &list->head;
+	tlist->head->data = list->head->data;
+	//tlist->head->data = list->head->data;
 	
-	if ( ( tlist->head.left = TreeElem_cpy_sub( list->head.left ) ) != NULL )
-		list->head.left->parent = &list->head;
+	tlist->head->t = list->head->t;
+	
+	if ( ( tlist->head->right = TreeElem_cpy_sub( list->head->right ) ) != NULL )
+		list->head->right->parent = list->head;
+	
+	if ( ( tlist->head->left = TreeElem_cpy_sub( list->head->left ) ) != NULL )
+		list->head->left->parent = list->head;
 	
 	//TreeElem_dump( &tlist->head );
 	//printf( "++++++===++++===++++===++++===+++===+++\n");
@@ -708,3 +733,51 @@ TreeList_t* TreeList_cpy_sub( TreeList_t* list )
 	
 	return tlist;
 }
+
+
+#define IS_DVAL( elem ) ( (elem->t == val) && \
+	!strcmp( array_of_variable_for_Tree_using_only_in_Var_search[(int) elem->data].name, dval ) )
+#define IS_OPER( oper ) \
+	( oper == ( char ) elem->data )
+#define R elem->right
+#define L elem->left
+#define dR Diff_Tree( elem->right, dval )
+#define dL Diff_Tree( elem->left, dval )
+
+TreeElem_t* New_Tree_elem( const char* data, TreeElem_t* left, TreeElem_t* right )
+{
+	TreeElem_t* tmp = TreeElem_ctor( ( TreeElem_t* ) calloc( 1, sizeof( TreeElem_t ) ), data );
+	tmp->left = left;
+	tmp->right = right;
+	
+	return tmp;
+}
+
+TreeElem_t* Diff_Tree( TreeElem_t* elem, const char* dval )
+{
+	
+	if ( elem == NULL || dval == NULL ) return NULL;
+	ASSERT_OK( TreeElem, elem );
+	
+	if ( !IS_DVAL( elem ) && ( elem->t == val ) || ( elem->t == constant )  )
+		return New_Tree_elem( "0", NULL, NULL );
+	else if (  IS_DVAL( elem ) )
+		return New_Tree_elem( "1", NULL, NULL );
+	else if ( IS_OPER( '+' ) )
+		return New_Tree_elem( "+", dL, dR );
+	else if ( IS_OPER( '-' ) )
+		return New_Tree_elem( "-", dL, dR );
+	else if ( IS_OPER( '*' ) )
+		return New_Tree_elem( "+", New_Tree_elem( "*", dL, R ), New_Tree_elem( "*", dL, R ) );
+	else if ( IS_OPER( '/') )
+		return New_Tree_elem( "/", ( New_Tree_elem( "-", New_Tree_elem( "*", dL, R ), New_Tree_elem( "*", L, dR ) ) ),
+									New_Tree_elem( "^", R, New_Tree_elem( "2", NULL, NULL ) ) );
+	else if ( IS_OPER( '^' ) && IS_DVAL( elem->left ))
+	{
+		TreeElem_t* tmpelem = New_Tree_elem( "2", NULL, NULL );
+		tmpelem->data = elem->data - 1;
+		
+		return New_Tree_elem( "*", New_Tree_elem( elem->str, NULL, NULL ), New_Tree_elem( "^", New_Tree_elem( dval, NULL, NULL ), tmpelem ) );
+	}
+}
+

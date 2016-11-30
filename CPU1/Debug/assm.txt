@@ -1,4 +1,5 @@
-nop
+push 0
+out
 in
 call fact
 out

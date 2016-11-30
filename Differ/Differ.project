@@ -94,5 +94,6 @@
     <File Name="main.c"/>
     <File Name="Diff_Head.h"/>
     <File Name="Diff_Tree.c"/>
+    <File Name="Diff.c"/>
   </VirtualDirectory>
 </CodeLite_Project>

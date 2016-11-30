@@ -1,1 +1,1 @@
-./Debug/main.c.o ./Debug/Diff_Tree.c.o
+./Debug/main.c.o ./Debug/Diff_Tree.c.o ./Debug/Diff.c.o

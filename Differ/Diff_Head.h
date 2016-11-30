@@ -8,6 +8,12 @@
 #define FALSE 0
 //#define DBG 
 
+#define CANARY 0XABBAABBA
+#define MAXVAL 100
+#define MAXNAME 100
+#define TFORMAT "v2.0Trsv"
+
+
 #ifdef DBG
     #define ASSERT_OK( wat, strct ) \
         wat##_ok( strct ) ? : wat##_dump( (strct) )
@@ -37,7 +43,8 @@ enum TreeOper_t
 	add = '+',
 	sub = '-',
 	mul = '*',
-	divv = '\\'
+	divv = '/',
+	pow = '^'
 };
 
 struct TreeElem_t
@@ -45,6 +52,7 @@ struct TreeElem_t
     unsigned int cnra;
 	TypeElem_t t;
 	Tree_Type data;
+	char* str;
     TreeElem_t* left;
     TreeElem_t* right;
     TreeElem_t* parent;
@@ -54,7 +62,7 @@ struct TreeElem_t
 struct TreeList_t
 {
     unsigned int cnra;
-    TreeElem_t head;
+    TreeElem_t* head;
     size_t count;
     unsigned int cnrb;
 };
@@ -112,8 +120,12 @@ int TreeList_read_in( TreeList_t* tlist, const char* fname );
 
 int TreeElem_dump_tex(  TreeElem_t* elem, FILE* out );
 
-int TreeList_dump_tex(  TreeList_t* tlist );
+int TreeList_dump_tex(  TreeList_t* tlist, TreeList_t* tlistb );
 
 TreeElem_t* TreeElem_cpy_sub( TreeElem_t* elem );
 
 TreeList_t* TreeList_cpy_sub( TreeList_t* list );
+
+TreeElem_t* New_Tree_elem( const char* data, TreeElem_t* left, TreeElem_t* right );
+
+TreeElem_t* Diff_Tree( TreeElem_t* elem, const char* dval );

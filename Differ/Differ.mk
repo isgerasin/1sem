@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Ilya
-Date                   :=28/11/16
+Date                   :=30/11/16
 CodeLitePath           :="/home/ilya/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Diff_Tree.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Diff_Tree.c$(ObjectSuffix) $(IntermediateDirectory)/Diff.c$(ObjectSuffix) 
 
 
 
@@ -106,6 +106,14 @@ $(IntermediateDirectory)/Diff_Tree.c$(DependSuffix): Diff_Tree.c
 
 $(IntermediateDirectory)/Diff_Tree.c$(PreprocessSuffix): Diff_Tree.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Diff_Tree.c$(PreprocessSuffix) "Diff_Tree.c"
+
+$(IntermediateDirectory)/Diff.c$(ObjectSuffix): Diff.c $(IntermediateDirectory)/Diff.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Diff.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Diff.c$(DependSuffix): Diff.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Diff.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Diff.c$(DependSuffix) -MM "Diff.c"
+
+$(IntermediateDirectory)/Diff.c$(PreprocessSuffix): Diff.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Diff.c$(PreprocessSuffix) "Diff.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
