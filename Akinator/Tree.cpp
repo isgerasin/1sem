@@ -170,7 +170,7 @@ int TreeList_dump_dot( TreeList_t* tlist )
             " -Tsvg -O %s", fname );
     system( com );
     char com1[20] = "";
-    sprintf( com1, "firefox %s.svg", fname );
+    sprintf( com1, "xdot %s", fname );
     system( com1 );
     return TRUE;
 }

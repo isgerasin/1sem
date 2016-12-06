@@ -6,7 +6,7 @@
 
 #define TRUE 1
 #define FALSE 0
-//#define DBG 
+#define DBG 
 
 #define CANARY 0XABBAABBA
 #define MAXVAL 100
@@ -35,7 +35,8 @@ enum TypeElem_t
 	unformat = 0,
 	constant = 1,
 	oper = 2,
-	val = 3
+	val = 3,
+	function = 4
 };
 
 enum TreeOper_t
@@ -45,6 +46,13 @@ enum TreeOper_t
 	mul = '*',
 	divv = '/',
 	pow = '^'
+};
+
+enum TreeFunct_t
+{
+	unformatf = 0,
+	sinus = 1,
+	cosinus = 2
 };
 
 struct TreeElem_t
@@ -126,6 +134,11 @@ TreeElem_t* TreeElem_cpy_sub( TreeElem_t* elem );
 
 TreeList_t* TreeList_cpy_sub( TreeList_t* list );
 
+TreeElem_t* TreeElem_cpy( TreeElem_t* elem );
+
 TreeElem_t* New_Tree_elem( const char* data, TreeElem_t* left, TreeElem_t* right );
 
 TreeElem_t* Diff_Tree( TreeElem_t* elem, const char* dval );
+
+int Tree_Simpl( TreeElem_t* elem );
+
