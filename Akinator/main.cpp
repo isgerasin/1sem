@@ -1,11 +1,9 @@
 
 #include "Akinator_Head.h"
 
-
-
-
 int main( int argc, const char* argv[] )
 {
+	
 	TreeList_t tlist = {};
 	
 	TreeList_ctor( &tlist, "" );

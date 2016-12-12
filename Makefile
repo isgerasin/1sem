@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ Differ - Debug ]----------"
-	@cd "Differ" && "$(MAKE)" -f  "Differ.mk"
+	@echo "----------Building project:[ compiler - Debug ]----------"
+	@cd "compiler" && "$(MAKE)" -f  "compiler.mk"
 clean:
-	@echo "----------Cleaning project:[ Differ - Debug ]----------"
-	@cd "Differ" && "$(MAKE)" -f  "Differ.mk" clean
+	@echo "----------Cleaning project:[ compiler - Debug ]----------"
+	@cd "compiler" && "$(MAKE)" -f  "compiler.mk" clean

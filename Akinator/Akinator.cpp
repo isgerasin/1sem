@@ -45,7 +45,8 @@ int Akin_Loop( TreeList_t* tlist )
 		else
 			printf( "Неопознанный коммандос!\n" );
 
-    } while ( 'e' );
+    } while (  1 );
+	return TRUE;
 }
 
 int Akin_Guess( TreeElem_t* telem )
@@ -156,16 +157,15 @@ void Akin_Charac( TreeElem_t* telem )
 			char* text = NULL;
 			if  ( TreeElem_search( tmp, tmpa ) == 'r' )
 			{
-				text = ( char* )  calloc( strlen( tmp->data ) + 3, sizeof( *text ) );
+				text = ( char* )  calloc( strlen( tmp->data ) + 5, sizeof( *text ) );
 				sprintf( text, "не %s", tmp->data  );
 			}
 			else if ( TreeElem_search( tmp, tmpa ) == 'l')
 			{
-				text = ( char* )  calloc( strlen( tmp->data ), sizeof( *text ) );
+				text = ( char* )  calloc( strlen( tmp->data ) + 2, sizeof( *text ) );
 				sprintf( text, "%s", tmp->data  );
 			}
 			Stack_Push( &stkt, text);
-			
 		}
 		//Stack_Dump( &stkt, "efd");
 		while ( stkt.count > 1 )
@@ -175,11 +175,13 @@ void Akin_Charac( TreeElem_t* telem )
 			free( text );
 		}
 		char* text = Stack_Pop( &stkt );
-			printf( " %s.\n", text );
-			free( text );
+		printf( " %s.\n", text );
+		free( text );
+		
 		Stack_Dtor( &stkt );
 		
 	}
+	free( name );
 }
 
 int Akin_Diff( TreeElem_t* telem )
@@ -216,12 +218,12 @@ int Akin_Diff( TreeElem_t* telem )
 		char* text = NULL;
 		if  ( TreeElem_search( tmp, tmpa ) == 'r' )
 		{
-			text = ( char* )  calloc( strlen( tmp->data ) + 3, sizeof( *text ) );
+			text = ( char* )  calloc( strlen( tmp->data ) + 5, sizeof( *text ) );
 			sprintf( text, "не %s", tmp->data  );
 		}
 		else if ( TreeElem_search( tmp, tmpa ) == 'l')
 		{
-			text = ( char* )  calloc( strlen( tmp->data ), sizeof( *text ) );
+			text = ( char* )  calloc( strlen( tmp->data ) + 2, sizeof( *text ) );
 			sprintf( text, "%s", tmp->data  );
 		}
 		Stack_Push( &stkt, text);
@@ -238,12 +240,12 @@ int Akin_Diff( TreeElem_t* telem )
 		char* text = NULL;
 		if  ( TreeElem_search( tmp, tmpa ) == 'r' )
 		{
-			text = ( char* )  calloc( strlen( tmp->data ) + 3, sizeof( *text ) );
+			text = ( char* )  calloc( strlen( tmp->data ) + 5, sizeof( *text ) );
 			sprintf( text, "не %s", tmp->data  );
 		}
 		else if ( TreeElem_search( tmp, tmpa ) == 'l')
 		{
-			text = ( char* )  calloc( strlen( tmp->data ), sizeof( *text ) );
+			text = ( char* )  calloc( strlen( tmp->data ) + 2, sizeof( *text ) );
 			sprintf( text, "%s", tmp->data  );
 		}
 		Stack_Push( &stkf, text);

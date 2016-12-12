@@ -1,5 +1,4 @@
-push 0
-out
+nop
 in
 call fact
 out
@@ -26,3 +25,5 @@ nop
 pop
 ret
 end
+
+

@@ -5,18 +5,18 @@
 ## Debug
 ProjectName            :=CPU
 ConfigurationName      :=Debug
-WorkspacePath          :="C:/Users/User/Documents/Industrial Programming"
-ProjectPath            :="C:/Users/User/Documents/Industrial Programming/CPU"
+WorkspacePath          := "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming"
+ProjectPath            := "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=User
-Date                   :=16/10/2016
-CodeLitePath           :="C:/Program Files/CodeLite"
-LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
-SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
+User                   :=Ilya
+Date                   :=08/12/16
+CodeLitePath           :="/home/ilya/.codelite"
+LinkerName             :=/usr/bin/x86_64-linux-gnu-g++
+SharedObjectLinkerName :=/usr/bin/x86_64-linux-gnu-g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.i
@@ -34,9 +34,7 @@ ArchiveOutputSwitch    :=
 PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="CPU.txt"
 PCHCompileFlags        :=
-MakeDirCommand         :=makedir
-RcCmpOptions           := 
-RcCompilerName         :=C:/TDM-GCC-64/bin/windres.exe
+MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
@@ -49,19 +47,19 @@ LibPath                := $(LibraryPathSwitch).
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := C:/TDM-GCC-64/bin/ar.exe rcu
-CXX      := C:/TDM-GCC-64/bin/g++.exe
-CC       := C:/TDM-GCC-64/bin/gcc.exe
+AR       := /usr/bin/x86_64-linux-gnu-ar rcu
+CXX      := /usr/bin/x86_64-linux-gnu-g++
+CC       := /usr/bin/x86_64-linux-gnu-gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
-AS       := C:/TDM-GCC-64/bin/as.exe
+AS       := /usr/bin/x86_64-linux-gnu-as
 
 
 ##
 ## User defined environment variables
 ##
-CodeLiteDir:=C:\Program Files\CodeLite
+CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) $(IntermediateDirectory)/Ass_Disass.cpp$(ObjectSuffix) 
 
 
@@ -81,11 +79,11 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 	$(LinkerName) $(OutputSwitch)$(OutputFile) @$(ObjectsFileList) $(LibPath) $(Libs) $(LinkOptions)
 
 MakeIntermediateDirs:
-	@$(MakeDirCommand) "./Debug"
+	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
 
 $(IntermediateDirectory)/.d:
-	@$(MakeDirCommand) "./Debug"
+	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
 PreBuild:
 
@@ -94,28 +92,28 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/User/Documents/Industrial Programming/CPU/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM "main.cpp"
 
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix)main.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) "main.cpp"
 
 $(IntermediateDirectory)/Stack.cpp$(ObjectSuffix): Stack.cpp $(IntermediateDirectory)/Stack.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/User/Documents/Industrial Programming/CPU/Stack.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Stack.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Stack.cpp$(DependSuffix): Stack.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Stack.cpp$(DependSuffix) -MM Stack.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Stack.cpp$(DependSuffix) -MM "Stack.cpp"
 
 $(IntermediateDirectory)/Stack.cpp$(PreprocessSuffix): Stack.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Stack.cpp$(PreprocessSuffix)Stack.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Stack.cpp$(PreprocessSuffix) "Stack.cpp"
 
 $(IntermediateDirectory)/Ass_Disass.cpp$(ObjectSuffix): Ass_Disass.cpp $(IntermediateDirectory)/Ass_Disass.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/User/Documents/Industrial Programming/CPU/Ass_Disass.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Ass_Disass.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Ass_Disass.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Ass_Disass.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Ass_Disass.cpp$(DependSuffix): Ass_Disass.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Ass_Disass.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Ass_Disass.cpp$(DependSuffix) -MM Ass_Disass.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Ass_Disass.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Ass_Disass.cpp$(DependSuffix) -MM "Ass_Disass.cpp"
 
 $(IntermediateDirectory)/Ass_Disass.cpp$(PreprocessSuffix): Ass_Disass.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Ass_Disass.cpp$(PreprocessSuffix)Ass_Disass.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Ass_Disass.cpp$(PreprocessSuffix) "Ass_Disass.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

@@ -15,7 +15,11 @@
   <Project Name="List" Path="List/List.project" Active="No"/>
   <Project Name="Akinator" Path="Akinator/Akinator.project" Active="No"/>
   <Project Name="Down" Path="../INDPROG/Down/Down.project" Active="No"/>
-  <Project Name="Differ" Path="Differ/Differ.project" Active="Yes"/>
+  <Project Name="Differ" Path="Differ/Differ.project" Active="No"/>
+  <Project Name="Emem" Path="Emem/Emem.project" Active="No"/>
+  <Project Name="sh" Path="sh/sh.project" Active="No"/>
+  <Project Name="wq" Path="wq/wq.project" Active="No"/>
+  <Project Name="compiler" Path="compiler/compiler.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -36,6 +40,10 @@
       <Project Name="Akinator" ConfigName="Debug"/>
       <Project Name="Down" ConfigName="Debug"/>
       <Project Name="Differ" ConfigName="Debug"/>
+      <Project Name="Emem" ConfigName="Debug"/>
+      <Project Name="sh" ConfigName="Debug"/>
+      <Project Name="wq" ConfigName="Debug"/>
+      <Project Name="compiler" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -56,6 +64,10 @@
       <Project Name="Akinator" ConfigName="Release"/>
       <Project Name="Down" ConfigName="Release"/>
       <Project Name="Differ" ConfigName="Release"/>
+      <Project Name="Emem" ConfigName="Release"/>
+      <Project Name="sh" ConfigName="Release"/>
+      <Project Name="wq" ConfigName="Release"/>
+      <Project Name="compiler" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

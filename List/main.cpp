@@ -6,6 +6,7 @@
 
 int main( int argc, char* argv[] )
 {
+	assert(0);
 	ListElem_t lel, lela, lelb, lelc, leld;
 	List_t list;
 	HashTble_t tbl;

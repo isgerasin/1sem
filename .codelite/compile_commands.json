@@ -1,0 +1,129 @@
+[{
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator",
+  "command": "/usr/bin/g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/main.cpp\".o  -lasan -O2 -g -std=c++14 -Wall -Wextra -Weffc++ -Waggressive-loop-optimizations -Wc++0x-compat -Wc++11-compat -Wc++14-compat -Wcast-align -Wcast-qual -Wchar-subscripts -Wconditionally-supported -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat=2 -Winline -Wlarger-than=8192 -Wlogical-op -Wmissing-declarations -Wnon-virtual-dtor -Wopenmp-simd -Woverloaded-virtual -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstack-usage=8192 -Wstrict-null-sentinel -Wstrict-overflow=2 -Wsuggest-attribute=noreturn -Wsuggest-final-methods -Wsuggest-final-types -Wsuggest-override -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef -Wunreachable-code -Wunused -Wuseless-cast -Wvariadic-macros -Wno-literal-suffix -Wno-missing-field-initializers -Wno-narrowing -Wno-old-style-cast -Wno-varargs -fcheck-new -fsized-deallocation -fstack-check -fstack-protector -fstrict-overflow -fchkp-first-field-has-own-bounds -fchkp-narrow-to-innermost-array -flto-odr-type-merging -fno-omit-frame-pointer -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=leak -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=object-size -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=shift -fsanitize=signed-integer-overflow -fsanitize=undefined -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fPIE -pie -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Tree.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator",
+  "command": "/usr/bin/g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Tree.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Tree.cpp\".o  -lasan -O2 -g -std=c++14 -Wall -Wextra -Weffc++ -Waggressive-loop-optimizations -Wc++0x-compat -Wc++11-compat -Wc++14-compat -Wcast-align -Wcast-qual -Wchar-subscripts -Wconditionally-supported -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat=2 -Winline -Wlarger-than=8192 -Wlogical-op -Wmissing-declarations -Wnon-virtual-dtor -Wopenmp-simd -Woverloaded-virtual -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstack-usage=8192 -Wstrict-null-sentinel -Wstrict-overflow=2 -Wsuggest-attribute=noreturn -Wsuggest-final-methods -Wsuggest-final-types -Wsuggest-override -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef -Wunreachable-code -Wunused -Wuseless-cast -Wvariadic-macros -Wno-literal-suffix -Wno-missing-field-initializers -Wno-narrowing -Wno-old-style-cast -Wno-varargs -fcheck-new -fsized-deallocation -fstack-check -fstack-protector -fstrict-overflow -fchkp-first-field-has-own-bounds -fchkp-narrow-to-innermost-array -flto-odr-type-merging -fno-omit-frame-pointer -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=leak -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=object-size -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=shift -fsanitize=signed-integer-overflow -fsanitize=undefined -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fPIE -pie -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Akinator.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator",
+  "command": "/usr/bin/g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Akinator.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Akinator.cpp\".o  -lasan -O2 -g -std=c++14 -Wall -Wextra -Weffc++ -Waggressive-loop-optimizations -Wc++0x-compat -Wc++11-compat -Wc++14-compat -Wcast-align -Wcast-qual -Wchar-subscripts -Wconditionally-supported -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat=2 -Winline -Wlarger-than=8192 -Wlogical-op -Wmissing-declarations -Wnon-virtual-dtor -Wopenmp-simd -Woverloaded-virtual -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstack-usage=8192 -Wstrict-null-sentinel -Wstrict-overflow=2 -Wsuggest-attribute=noreturn -Wsuggest-final-methods -Wsuggest-final-types -Wsuggest-override -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef -Wunreachable-code -Wunused -Wuseless-cast -Wvariadic-macros -Wno-literal-suffix -Wno-missing-field-initializers -Wno-narrowing -Wno-old-style-cast -Wno-varargs -fcheck-new -fsized-deallocation -fstack-check -fstack-protector -fstrict-overflow -fchkp-first-field-has-own-bounds -fchkp-narrow-to-innermost-array -flto-odr-type-merging -fno-omit-frame-pointer -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=leak -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=object-size -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=shift -fsanitize=signed-integer-overflow -fsanitize=undefined -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fPIE -pie -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Stack.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator",
+  "command": "/usr/bin/g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Stack.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Akinator/Stack.cpp\".o  -lasan -O2 -g -std=c++14 -Wall -Wextra -Weffc++ -Waggressive-loop-optimizations -Wc++0x-compat -Wc++11-compat -Wc++14-compat -Wcast-align -Wcast-qual -Wchar-subscripts -Wconditionally-supported -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wformat=2 -Winline -Wlarger-than=8192 -Wlogical-op -Wmissing-declarations -Wnon-virtual-dtor -Wopenmp-simd -Woverloaded-virtual -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstack-usage=8192 -Wstrict-null-sentinel -Wstrict-overflow=2 -Wsuggest-attribute=noreturn -Wsuggest-final-methods -Wsuggest-final-types -Wsuggest-override -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef -Wunreachable-code -Wunused -Wuseless-cast -Wvariadic-macros -Wno-literal-suffix -Wno-missing-field-initializers -Wno-narrowing -Wno-old-style-cast -Wno-varargs -fcheck-new -fsized-deallocation -fstack-check -fstack-protector -fstrict-overflow -fchkp-first-field-has-own-bounds -fchkp-narrow-to-innermost-array -flto-odr-type-merging -fno-omit-frame-pointer -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=leak -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=object-size -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=shift -fsanitize=signed-integer-overflow -fsanitize=undefined -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fPIE -pie -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Stack.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Stack.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Stack.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Ass_Disass.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Ass_Disass.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU/Ass_Disass.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/Stack.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/Stack.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/Stack.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/Assembler.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/Assembler.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/Assembler.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/CPU.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/CPU.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/CPU1/CPU.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/main.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/main.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/main.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Tree.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Tree.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff_Tree.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Differ/Diff.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down",
+  "command": "/usr/bin/g++ -c /media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down/main.cpp -o /media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down/main.cpp.o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down/Down.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down",
+  "command": "/usr/bin/g++ -c /media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down/Down.cpp -o /media/ilya/48AC7766EB621CC7/Programms_Codelite/INDPROG/Down/Down.cpp.o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Emem/main.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Emem",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Emem/main.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Emem/main.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Hello/main.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Hello",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Hello/main.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Hello/main.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/List.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/List.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/List.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/HashTbl.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/HashTbl.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/List/HashTbl.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/OpenGL/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/OpenGL",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/OpenGL/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/OpenGL/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Pictures/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Pictures",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Pictures/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Pictures/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/RhymeRef/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/RhymeRef",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/RhymeRef/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/RhymeRef/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Rhyme_Sort/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Rhyme_Sort",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Rhyme_Sort/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Rhyme_Sort/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/SolvesSquare/main.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/SolvesSquare",
+  "command": "/usr/bin/x86_64-linux-gnu-gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/SolvesSquare/main.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/SolvesSquare/main.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Stack_Func/Stack.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Stack_Func",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Stack_Func/Stack.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Stack_Func/Stack.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/StrSort/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/StrSort",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/StrSort/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/StrSort/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Str_Std/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Str_Std",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Str_Std/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Str_Std/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Onegin/main.cpp",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Onegin",
+  "command": "/usr/bin/x86_64-linux-gnu-g++ -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Onegin/main.cpp\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/Onegin/main.cpp\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/sh/main.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/sh",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/sh/main.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/sh/main.c\".o  -g  -O0  -Wall -I. -I."
+ }, {
+  "file": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/wq/main.c",
+  "directory": "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/wq",
+  "command": "/usr/bin/gcc -c \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/wq/main.c\" -o \"/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/wq/main.c\".o  -g  -O0  -Wall  -lc++abi -I. -I."
+ }]

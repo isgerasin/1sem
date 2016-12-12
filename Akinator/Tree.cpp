@@ -76,7 +76,9 @@ int TreeElem_dtor( TreeElem_t* telem )
     telem->parent = NULL;
 	if ( telem->parent != telem )
 		free( telem );
+	free( (void*) telem->data );
 	telem->data = NULL;
+	
     return TRUE;
 }
 
@@ -105,7 +107,7 @@ int TreeElem_dtor_sub( TreeElem_t* telem )
     if ( telem->left != NULL )
         TreeElem_dtor_sub( telem->left );
     TreeElem_dtor( telem );
-    
+    free( telem );
     return TRUE;
 }
 
