@@ -2,6 +2,9 @@
 #include <assert.h>
 #include "Header.h"
 
+int max_pushr = 0;
+
+extern int Var_counter_file;
 
 int CPU_Ctor(   CPU_t* cpu, int lend, int lenp )
 {
@@ -9,10 +12,26 @@ int CPU_Ctor(   CPU_t* cpu, int lend, int lenp )
 	
 	Stack_Ctor( &cpu->Stk_data, lend );
 	Stack_Ctor( &cpu->Stk_pntr, lenp );
+	Stack_Ctor( &cpu->Stk_of_var_address, MAXPNTR );
+	Stack_Push( &cpu->Stk_of_var_address, 0 );
 	cpu->ax = 0;
 	cpu->bx = 0;
 	cpu->cx = 0;
 	cpu->dx = 0;
+	cpu->ex = 0;
+	cpu->fx = 0;
+	cpu->gx = 0;
+	cpu->hx = 0;
+	cpu->ix = 0;
+	cpu->jx = 0;
+	cpu->kx = 0;
+	cpu->lx = 0;
+	cpu->mx = 0;
+	cpu->nx = 0;
+	cpu->ox = 0;
+	cpu->px = 0;
+	for ( int i = 0; i < MAXVAL; i++ )
+		cpu->dinmem[i] = 0;
 	return CPU_Ok( cpu );
 }
 
@@ -22,6 +41,7 @@ int CPU_Dtor(   CPU_t* cpu )
 	
 	Stack_Dtor( &cpu->Stk_data );
 	Stack_Dtor( &cpu->Stk_pntr );
+	
 	cpu->ax = 0;
 	cpu->bx = 0;
 	cpu->cx = 0;
@@ -44,6 +64,7 @@ int CPU_Ok(     CPU_t* cpu )
 int CPU_Dump(   CPU_t* cpu )
 {
 	assert( cpu );
+	printf( "______________________________________________________________________________\n");
 	printf( "Canary 1 = %d (%s)\n", cpu->c1, ( cpu->c1 ==  0xFC ) ? "ok" : "ERROR!!!");
 	printf( "CPU (%s)\n", CPU_Ok( cpu ) ? "ok" : "ERROR!!!");
 	
@@ -53,7 +74,22 @@ int CPU_Dump(   CPU_t* cpu )
 	printf( " bx = %f [%0X]\n", cpu->bx, &cpu->bx );
 	printf( " cx = %f [%0X]\n", cpu->cx, &cpu->cx );
 	printf( " dx = %f [%0X]\n", cpu->dx, &cpu->dx );
+	printf( " ex = %f [%0X]\n", cpu->ex, &cpu->ex );
+	printf( " fx = %f [%0X]\n", cpu->fx, &cpu->fx );
+	printf( " gx = %f [%0X]\n", cpu->gx, &cpu->gx );
+	printf( " hx = %f [%0X]\n", cpu->hx, &cpu->hx );
+	printf( " ix = %f [%0X]\n", cpu->ix, &cpu->ix );
+	printf( " jx = %f [%0X]\n", cpu->jx, &cpu->jx );
+	printf( " kx = %f [%0X]\n", cpu->kx, &cpu->kx );
+	printf( " lx = %f [%0X]\n", cpu->lx, &cpu->lx );
+	printf( " mx = %f [%0X]\n", cpu->mx, &cpu->mx );
+	printf( " nx = %f [%0X]\n", cpu->nx, &cpu->nx );
+	printf( " ox = %f [%0X]\n", cpu->ox, &cpu->ox );
+	printf( " px = %f [%0X]\n", cpu->px, &cpu->px );
+	for ( int i = 0; i < MAXVAL; i++ )
+		printf( "\tvar%2d = %f [%0X]\n", i, cpu->dinmem[i], &cpu->dinmem[i] );
 	printf( "Canary 2 = %d (%s)\n", cpu->c1, ( cpu->c2 ==  0xFC ) ? "ok" : "ERROR!!!");
+	printf( "______________________________________________________________________________\n");
 
 }
 
@@ -68,6 +104,69 @@ int CPU_Cmp(    CPU_t* cpu )
 	Stack_Push( &cpu->Stk_data, a );
 	//printf( "!%d!", b - a );
 	return b - a;
+}
+
+int CPU_E(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	double a = Stack_Pop( &cpu->Stk_data );
+	double b = Stack_Pop( &cpu->Stk_data );
+	Stack_Push( &cpu->Stk_data, b == a );
+	
+	return b == a;
+}
+
+int CPU_NE(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	double a = Stack_Pop( &cpu->Stk_data );
+	double b = Stack_Pop( &cpu->Stk_data );
+	Stack_Push( &cpu->Stk_data, b != a );
+	return b != a;
+}
+
+int CPU_A(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	double a = Stack_Pop( &cpu->Stk_data );
+	double b = Stack_Pop( &cpu->Stk_data );
+	Stack_Push( &cpu->Stk_data, b > a );
+	return b > a;
+}
+
+int CPU_B(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	double a = Stack_Pop( &cpu->Stk_data );
+	double b = Stack_Pop( &cpu->Stk_data );
+	Stack_Push( &cpu->Stk_data, b < a );
+	return b < a;
+}
+
+int CPU_AE(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	double a = Stack_Pop( &cpu->Stk_data );
+	double b = Stack_Pop( &cpu->Stk_data );
+	Stack_Push( &cpu->Stk_data, b >= a );
+	return b >= a;
+}
+
+int CPU_BE(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	double a = Stack_Pop( &cpu->Stk_data );
+	double b = Stack_Pop( &cpu->Stk_data );
+	Stack_Push( &cpu->Stk_data, b <= a );
+	return b <= a;
+}
+
+int CPU_POW(    CPU_t* cpu, const double* code, int* i, int len )
+{
+	
+	Stack_Push( &cpu->Stk_data, pow(Stack_Pop( &cpu->Stk_data ), Stack_Pop( &cpu->Stk_data ) ) );
+	
+	return CPU_Ok( cpu );
 }
 
 int CPU_NOP(    CPU_t* cpu, const double* code, int* i, int len )
@@ -155,12 +254,12 @@ int CPU_OUT(    CPU_t* cpu, const double* code, int* i, int len )
 {
 	assert( cpu );
 	
-	double tmp = Stack_Pop( &cpu->Stk_data );
-	printf( "%f\n", tmp );
-	Stack_Push( &cpu->Stk_data, tmp );
+	//double tmp = Stack_Pop( &cpu->Stk_data );
+	printf( "%f\n", cpu->Stk_data.data[cpu->Stk_data.count - 1] );
+	//Stack_Push( &cpu->Stk_data, tmp );
 	return CPU_Ok( cpu );
 }
-
+/*
 int CPU_POPR(   CPU_t* cpu, const double* code, int* i, int len )
 {
 	assert( cpu );
@@ -174,6 +273,28 @@ int CPU_PUSHR(  CPU_t* cpu, const double* code, int* i, int len )
 	assert( cpu );
 	
 	Stack_Push( &cpu->Stk_data, *( &cpu->ax + ( char ) code[++(*i)] - 'a') );
+	return CPU_Ok( cpu );
+}
+*/
+int CPU_PUSHR(  CPU_t* cpu, const double* code, int* i, int len )
+{
+	assert( cpu );
+	max_pushr++;
+	char addres = ( char ) Stack_Pop( &cpu->Stk_of_var_address );
+	Stack_Push( &cpu->Stk_of_var_address, ( double ) addres );
+	//Stack_Push( &cpu->Stk_data, *( &cpu->ax + ( char ) code[++(*i)] - 'a') );
+	Stack_Push( &cpu->Stk_data, *( cpu->dinmem + addres + ( char ) code[++(*i)] - 'a') );
+	return CPU_Ok( cpu );
+}
+
+int CPU_POPR(   CPU_t* cpu, const double* code, int* i, int len )
+{
+	assert( cpu );
+	char addres = ( char ) Stack_Pop( &cpu->Stk_of_var_address );
+	Stack_Push( &cpu->Stk_of_var_address, ( double ) addres );
+	
+	//*( &cpu->ax + ( char ) code[++(*i)] - 'a') = Stack_Pop( &cpu->Stk_data );
+	*( cpu->dinmem + addres + ( char ) code[++(*i)] - 'a' ) = Stack_Pop( &cpu->Stk_data );
 	return CPU_Ok( cpu );
 }
 
@@ -221,6 +342,11 @@ int CPU_JMP(    CPU_t* cpu, const double* code, int* i, int len )
 
 int CPU_CALL(   CPU_t* cpu, const double* code, int* i, int len )
 {
+	int pos = ( int ) Stack_Pop( &cpu->Stk_of_var_address );
+	//printf( "%d %d\n", pos, Var_counter_file );
+	Stack_Push( &cpu->Stk_of_var_address, pos );
+	Stack_Push( &cpu->Stk_of_var_address, Var_counter_file +  pos );
+	//max_pushr = 0;
 	Stack_Push( &cpu->Stk_pntr, *i );
 	*i = code[++(*i)] - 1;
 	return CPU_Ok( cpu );
@@ -228,7 +354,8 @@ int CPU_CALL(   CPU_t* cpu, const double* code, int* i, int len )
 
 int CPU_RET(    CPU_t* cpu, const double* code, int* i, int len )
 {
-	*i = ( int ) Stack_Pop( &cpu->Stk_pntr );
+	Stack_Pop( &cpu->Stk_of_var_address );
+	*i = ( int ) Stack_Pop( &cpu->Stk_pntr ) + 1;
 	return CPU_Ok( cpu );
 }
 
@@ -291,7 +418,11 @@ int CPU_Loop( CPU_t* cpu, const double* code, int len )
 	
 	for ( int i = 0; i < len; i++ )
 	{
+		//printf( "%s +++++++++++++++++++ %d\n", Dis_Assm_Func( code[i] ), i );
 		int check = CPU_Command( cpu, ( int ) code[i], code, &i, len );
+		//printf( "%d\n", Var_counter_file );
+		//CPU_Dump( cpu );
+		
 		assert( check );
 	}
 	

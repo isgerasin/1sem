@@ -1,1 +1,1 @@
-./Debug/main.c.o ./Debug/Tree.c.o ./Debug/Tokens.c.o
+./Debug/main.c.o ./Debug/Tree.c.o ./Debug/Tokens.c.o ./Debug/recdes.c.o ./Debug/ToAssm.c.o

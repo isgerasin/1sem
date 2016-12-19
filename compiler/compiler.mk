@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Ilya
-Date                   :=11/12/16
+Date                   :=20/12/16
 CodeLitePath           :="/home/ilya/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -36,7 +36,7 @@ ObjectsFileList        :="compiler.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
-IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
+IncludePath            :=  $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
 Libs                   := 
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Tree.c$(ObjectSuffix) $(IntermediateDirectory)/Tokens.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Tree.c$(ObjectSuffix) $(IntermediateDirectory)/Tokens.c$(ObjectSuffix) $(IntermediateDirectory)/recdes.c$(ObjectSuffix) $(IntermediateDirectory)/ToAssm.c$(ObjectSuffix) 
 
 
 
@@ -114,6 +114,22 @@ $(IntermediateDirectory)/Tokens.c$(DependSuffix): Tokens.c
 
 $(IntermediateDirectory)/Tokens.c$(PreprocessSuffix): Tokens.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Tokens.c$(PreprocessSuffix) "Tokens.c"
+
+$(IntermediateDirectory)/recdes.c$(ObjectSuffix): recdes.c $(IntermediateDirectory)/recdes.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/compiler/recdes.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/recdes.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/recdes.c$(DependSuffix): recdes.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/recdes.c$(ObjectSuffix) -MF$(IntermediateDirectory)/recdes.c$(DependSuffix) -MM "recdes.c"
+
+$(IntermediateDirectory)/recdes.c$(PreprocessSuffix): recdes.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/recdes.c$(PreprocessSuffix) "recdes.c"
+
+$(IntermediateDirectory)/ToAssm.c$(ObjectSuffix): ToAssm.c $(IntermediateDirectory)/ToAssm.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/media/ilya/48AC7766EB621CC7/Programms_Codelite/Industrial Programming/compiler/ToAssm.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ToAssm.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ToAssm.c$(DependSuffix): ToAssm.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ToAssm.c$(ObjectSuffix) -MF$(IntermediateDirectory)/ToAssm.c$(DependSuffix) -MM "ToAssm.c"
+
+$(IntermediateDirectory)/ToAssm.c$(PreprocessSuffix): ToAssm.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ToAssm.c$(PreprocessSuffix) "ToAssm.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

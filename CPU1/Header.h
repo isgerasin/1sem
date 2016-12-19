@@ -8,8 +8,9 @@
 #define TRUE 1
 #define FALSE 0
 #define MAXCOMNUM 10
-#define MAXPNTR 20
-#define MAXPNTRNAME 10
+#define MAXPNTR 100
+#define MAXPNTRNAME 20
+#define MAXVAL 100
 
 #define DBG
 
@@ -77,8 +78,10 @@ enum Commands_t
 
 struct point_t
 {
-	int from;
+	//int from;
+	stack_t from;
 	int to;
+	
 	char name[MAXPNTRNAME];
 };
 
@@ -112,12 +115,28 @@ struct CPU_t
 	int c1 = 0xFC;
 	stack_t Stk_data;
 	stack_t Stk_pntr;
+	stack_t Stk_of_var_address;
 	double ax;
 	double bx;
 	double cx;
 	double dx;
+	double ex;
+	double fx;
+	double gx;
+	double hx;
+	double ix;
+	double jx;
+	double kx;
+	double lx;
+	double mx;
+	double nx;
+	double ox;
+	double px;
+	double dinmem[MAXVAL];
 	int c2 = 0xFC;
 };
+
+
 
 int CPU_Dump(    CPU_t* cpu );
 

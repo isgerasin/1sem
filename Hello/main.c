@@ -1,14 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h> // чтобы работал qsort
-#include <assert.h>
-#include <math.h>
-#define N 100
 
+int x = 10;
+
+void foo(int* y )
+{
+	*y = *y - 7;
+}
 
 int main()
 {
-	int* c = malloc( sizeof( int ) );
-	//printf("%s\n", convert( d, "110100011" ) );
-    
-    return 0;
+	foo();
+	foo();
+	printf("x=%d\n", x);
+	return 0;
 }

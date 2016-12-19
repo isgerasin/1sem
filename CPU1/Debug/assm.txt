@@ -1,29 +1,22 @@
+
+in 
+popr ax
+
+pushr ax
+push 2
+add
+popr bx
 nop
-in
 call fact
+nop
+pushr ax
 out
 end
 
 :fact
-:fact2
-push 1
-je one
-pop
-popr ax
-pushr ax
-pushr ax
-push 1
-sub
-je two
-call fact2
-mul
-ret
 
-:one
-:two
-nop
-pop
-ret
-end
+pushr ax
+out
 
+ret
 

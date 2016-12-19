@@ -1,7 +1,18 @@
 #include <string.h>
+#include <ctype.h>
 #include "Header.h"
 
+int Var_counter_file;
 
+int Create_pntr_V( point_t* pntrs )
+{
+	for ( int i = 0; i < MAXPNTR; i++ )
+	{
+		Stack_Ctor( &pntrs[i].from, MAXPNTR );
+	}
+		
+	return 0;
+}
 
 int File_Len( FILE* fl1 )
 {
@@ -56,7 +67,10 @@ double Assm_Func( char* com )
 	
 	int i = 0;
 	while ( com[i] != '\0' )
-		com[i++] += 'A' - 'a';
+	{
+		com[i] = toupper( com[i] ) ;
+		i++;
+	}
 	
 	Commands_t tmp = ( Commands_t ) 0;
 	#define DEF_CMD( nm, numm, cnt )	if ( strcmp( com, #nm ) == 0) \
@@ -109,7 +123,7 @@ double Assm_Func( char* com )
 	*/
 	
 	//printf( "%lg %s\n", ( double ) tmp, com );
-	
+	//printf( "%d ", tmp );
 	return ( double ) tmp ;
 }
 
@@ -129,15 +143,28 @@ char* Dis_Assm_Func( int comnum )
 
 double Assm_V_P(double* vctr)
 {
-	int i = 0;
+	
+	/*
 	while ( (pntrs[i].from != 0) || (pntrs[i].to != 0) )
 		vctr[pntrs[i].from] = pntrs[i++].to;
+	*/
+	int i = 0;
+	while ( pntrs[i].name[0] != '\0' )
+	{
+		while( pntrs[i].from.count > 0 )
+		{
+			//fprintf(stderr, "%s %lg %lg %lg %d\n", pntrs[i].name, pntrs[i].from.data[0], pntrs[i].from.data[1], pntrs[i].from.data[2], pntrs[i].to );
+			vctr[(int) Stack_Pop( &pntrs[i].from )] = pntrs[i].to;
+		}
+		i++;
+	}
 	
 	return TRUE;
 }
 
 int Pntr_Found( const char* name, int j )
 {
+	
 	for ( int i = 0; i <= j; i++)
 		if ( strcmp( name, pntrs[i].name) == 0)
 			return i;
@@ -149,7 +176,7 @@ double* Assm_V(const char* bufa)
 	
 	double* vctr = ( double* ) calloc( strlen( bufa ), sizeof( *vctr ) );
 	
-	
+	Create_pntr_V( pntrs );
 	
 	if ( !vctr ) return NULL;
 	
@@ -157,7 +184,12 @@ double* Assm_V(const char* bufa)
 	
 	int j = 0;
 	int i = 0;
-	if ( p[0] == ':' )
+	if ( isdigit(p[0]) )
+	{
+		Var_counter_file = (int) atoi( p );
+		//printf( "!!!!!%d\n", Var_counter_file );
+	}
+	else if ( p[0] == ':' )
 	{
 		int tmpj = j;
 		j = Pntr_Found( &p[1], j );
@@ -176,7 +208,8 @@ double* Assm_V(const char* bufa)
 		if ( ( 13 <= comnum ) && ( comnum <= 21 ) )
 		{
 			p = strtok( NULL, " \n\r" );
-			pntrs[j].from = i;
+			//pntrs[j].from = i;
+			Stack_Push( &(pntrs[j].from), i );
 			strcpy( pntrs[j++].name, p );
 			vctr[i++] = -1;
 		}
@@ -189,6 +222,7 @@ double* Assm_V(const char* bufa)
 				vctr[i++] = p[0];
 		}
 	}
+	
 	while ( p )
 	{
 		p = strtok( NULL, " \n\r" );
@@ -216,7 +250,11 @@ double* Assm_V(const char* bufa)
 				p = strtok( NULL, " \n\r" );
 				int tmpj = j;
 				j = Pntr_Found( p , j );
-				pntrs[j].from = i;
+				
+				//pntrs[j].from = i;
+				
+				Stack_Push( &pntrs[j].from, i );
+				
 				strcpy( pntrs[j].name, p );
 				//printf( "!%s! %i \n", p, i);
 				vctr[i++] = -1;
@@ -234,12 +272,19 @@ double* Assm_V(const char* bufa)
 					vctr[i++] = p[0];
 			}
 		}
+		
+		
+		
 	}
-	
-	//for (int i = 0; i < MAXPNTR; i++)
-	//{
-	//	printf( "%s %d %d\n", pntrs[i].name, pntrs[i].from, pntrs[i].to );
-	//}
+	//fprintf( *pntrs[i].from.data
+	/*
+	int rt = 0;
+	while ( pntrs[rt].name[0] != '\0' )
+	{
+		fprintf(stderr, "%s %lg %lg %lg %d\n", pntrs[rt].name, pntrs[rt].from.data[0], pntrs[rt].from.data[1], pntrs[rt].from.data[2], pntrs[rt].to );
+		rt++;
+	}
+	*/
 	
 	return vctr;
 }

@@ -1,0 +1,28 @@
+4
+in
+popr ax
+
+pushr ax
+push 4
+add
+popr bx
+jmp cont1
+:output(
+pushr ax
+out
+pop
+
+pushr ax
+ret
+ret
+:cont1
+pushr bx
+popr ex
+call output(
+nop
+popr dx
+pushr ax
+out
+pop
+
+end

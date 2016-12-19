@@ -1,11 +1,6 @@
 #include "Head.h"
 
-#define IS_DVAL( elem ) ( (elem->t == val) && \
-		!strcmp( array_of_variable_for_Tree_using_only_in_Diff_Tree[(int) elem->data].name, dval ) )
-#define IS_OPER( operator ) ( ( elem->t == oper ) && \
-		( operator == ( char ) elem->data ) )
-#define IS_CONST( element, c ) ( ( (element)->t == constant ) && ((element)->data == c ) )
-#define IS_FUNCT( f ) ( ( elem->t == function ) && ( (int) elem->data == f ) )
+
 #define R TreeElem_cpy_sub( elem->right )
 #define L TreeElem_cpy_sub( elem->left )
 #define dR Diff_Tree( elem->right, dval )
@@ -14,6 +9,7 @@
 #define SUB_DATA tmp->data = elem->left->data - elem->right->data
 #define MUL_DATA tmp->data = elem->left->data * elem->right->data
 #define DIV_DATA tmp->data = elem->left->data / elem->right->data
+#define POW_DATA tmp->data = pow( elem->left->data, elem->right->data )
 
 struct Fuct_t
 {
@@ -23,7 +19,7 @@ struct Fuct_t
 
 //Variable_t array_of_variable_for_Tree_using_only_in_Diff_Tree[MAXVAL] = {};
 Fuct_t array_of_funct_for_Tree_using_only_in_Diff_Tree[3]
-					= { { "what do you mean??", unformatf }, { "sin", sinus }, { "cos", cosinus } };
+					= { { "what do you mean??", _unformatf }, { "sin", _sinus }, { "cos", _cosinus } };
 
 int DotNumber_For_use_in_Dump_Dot_only = 0;
 int TexNumber_For_use_in_Dump_Tex_only = 0;
@@ -57,13 +53,14 @@ int TreeElem_dump( TreeElem_t* telem )
         printf( "TreeElem_t (%s) [%X]\n"
                 "\tCanary 1 = %X\n"
                 "\t\tData = \"%lg\"\n"
-				"\t \Type = %d\n"
+				"\t Type = %d\n"
+				"\t Str = %s\n"
                 "\tRight = [%X]\n"
                 "\tLeft  = [%X]\n"
                 "\tParent = [%X]\n"
                 "\tCanary 2 = %X\n",
                 TreeElem_ok( telem ) ? "OK" : "ERROR",
-                telem, telem->cnra, telem->data, telem->t,
+                telem, telem->cnra, telem->data, telem->t, telem->str,
                 telem->right, telem->left, telem->parent, telem->cnrb );
     }
     printf( "____________________________________\n" );
@@ -191,6 +188,7 @@ int TreeList_ok( TreeList_t* tlist )
             Tree_ok( tlist->head );
 }
 
+/*
 int TreeElem_dump_dot( TreeElem_t* elem, FILE* out )
 {
     if ( elem == NULL ) return TRUE;
@@ -198,55 +196,63 @@ int TreeElem_dump_dot( TreeElem_t* elem, FILE* out )
 	
     if ( elem->left != NULL )
     {
-		if ( elem->t == oper && elem->left->t == constant )
+		if ( (elem->t == oper || elem->t == separ) && elem->left->t == constant )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%lg\n[%X]\"\n",
 			( char ) elem->data, elem, elem->left->data, elem->left);
-		else if ( elem->t == oper && elem->left->t == oper )
+		else if ( (elem->t == oper || elem->t == separ)&& (elem->left->t == oper || elem->left->t == separ) )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%c\n[%X]\"\n",
 			( char ) elem->data, elem, ( char ) elem->left->data, elem->left );
-		else if ( elem->t == oper && elem->left->t == val )
+		else if ( (elem->t == oper || elem->t == separ) && elem->left->t == val )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%s\n[%X]\"\n",
 			( char ) elem->data, elem,
 			array_of_variable_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->left->data].name, elem->left );
-		else if ( elem->t == oper && elem->left->t == function )
+		else if ( (elem->t == oper || elem->t == separ) && elem->left->t == function )
 		{
 			fprintf( out, "\t\"%c\n[%X]\"->\"%s\n[%X]\"\n",
 			( char ) elem->data, elem,
-			array_of_funct_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->left->data].name, elem->left );
+			elem->left->str, elem->left );
 		}
 		else if ( elem->t == function && elem->left->t == val )
-			elem;
+			fprintf( out, "\t\"%s\n[%X]\"->\"%s\n[%X]\"\n",
+			elem->str, elem,
+			array_of_variable_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->left->data].name, elem->left );
 		else if ( elem->t == function && elem->left->t == constant )
-			elem;
+			fprintf( out, "\t\"%s\n[%X]\"->\"%lg\n[%X]\"\n",
+			elem->str, elem,
+			elem->left->data, elem->left );
+		else if ( elem->t == function && elem->left->t == oper )
+			fprintf( out, "\t\"%s\n[%X]\"->\"%c\n[%X]\"\n",
+			elem->str, elem,
+			(char) elem->left->data, elem->left );
 		else 
 			return FALSE;
 		TreeElem_dump_dot( elem->left, out );
     }
 	if ( elem->right != NULL )
     {
-		if ( elem->t == oper && elem->right->t == constant )
+		if ( (elem->t == oper || elem->t == separ)&&  elem->right->t == constant )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%lg\n[%X]\"\n",
 			( char ) elem->data, elem, elem->right->data, elem->right);
-		else if ( elem->t == oper && elem->right->t == oper )
+		else if ( (elem->t == oper || elem->t == separ)&& (elem->right->t == oper || elem->right->t == separ ) )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%c\n[%X]\"\n",
 			( char ) elem->data, elem, ( char ) elem->right->data, elem->right );
-		else if ( elem->t == oper && elem->right->t == val )
+		else if ( (elem->t == oper || elem->t == separ) && elem->right->t == val )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%s\n[%X]\"\n",
 			( char ) elem->data, elem,
 			array_of_variable_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->right->data].name, elem->right );
-		else if ( elem->t == oper && elem->right->t == function )
+		else if ( (elem->t == oper || elem->t == separ)&& elem->right->t == function )
 			fprintf( out, "\t\"%c\n[%X]\"->\"%s\n[%X]\"\n",
 					( char ) elem->data, elem,
-					array_of_funct_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->right->data].name, elem->right );
+					elem->right->str, elem->right );
 		else if ( elem->t == function && elem->right->t == val )
 		{
 			fprintf( out, "\t\"%s\n[%X]\"->\"%s\n[%X]\"\n",
-			array_of_funct_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->data].name, elem,
+			elem->str, elem,
 			array_of_variable_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->right->data].name, elem->right );
 		}
 		else if ( elem->t == function && elem->right->t == constant )
 			fprintf( out, "\t\"%s\n[%X]\"->\"%lg\n[%X]\"\n",
-			array_of_funct_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->data].name, elem,
+			elem->str, elem,
 			elem->right->data, elem->right );
 		else 
 		{
@@ -256,6 +262,59 @@ int TreeElem_dump_dot( TreeElem_t* elem, FILE* out )
     }
 	
     return  TRUE;
+}
+*/
+
+int TreeElem_print_dot( TreeElem_t* elem, FILE* out )
+{
+	if ( elem == NULL ) return TRUE;
+	
+
+	Variable_t* vctr = array_of_variable_for_Tree_using_only_in_Diff_Tree;
+	
+	if ( elem->t == constant )
+		fprintf( out, "\"%lg\n[%X]\"", elem->data, elem );
+	else if ( elem->t == val )
+		fprintf( out, "\"%s\n[%X]\"", vctr[(int) elem->data].name, elem );
+	else if ( elem->t == oper && elem->data == E )
+		fprintf( out, "\"==\n[%X]\"", elem );
+	else if ( elem->t == oper && elem->data == NE )
+		fprintf( out, "\"!=\n[%X]\"", elem );
+	else if ( elem->t == oper && elem->data == AE )
+		fprintf( out, "\">=\n[%X]\"", elem );
+	else if ( elem->t == oper && elem->data == BE )
+		fprintf( out, "\"<=\n[%X]\"", elem );
+	else if ( elem->t == oper || elem->t == separ  )
+		fprintf( out, "\"%c\n[%X]\"", (char) elem->data, elem );
+	else if ( elem->t == function || elem->t == ifel || elem->t == cycle )
+		fprintf( out, "\"%s\n[%X]\"", elem->str, elem );
+	else 
+		fprintf( out, "\"%s\n[%X]\"", elem->str, elem );
+	
+}
+
+int TreeElem_dump_dot( TreeElem_t* elem, FILE* out )
+{
+    if ( elem == NULL ) return TRUE;
+
+	
+	TreeElem_print_dot( elem, out );
+	fprintf( out, "\n" );
+	
+	if ( elem->left != NULL )
+	{
+		TreeElem_print_dot( elem, out );
+		fprintf( out, "->" );
+		TreeElem_dump_dot( elem->left, out );
+	}
+	if ( elem->right != NULL && elem->t != myfunc )
+	{
+		TreeElem_print_dot( elem, out );
+		fprintf( out, "->" );
+		TreeElem_dump_dot( elem->right, out );
+	}
+	
+	return TRUE;
 }
 
 int TreeList_dump( TreeList_t* tlist )
@@ -270,7 +329,7 @@ int TreeList_dump_dot( TreeList_t* tlist )
 	
     if ( tlist == NULL )
 	{
-		printf( "ERROR!! NULL ADRESS LIST" );
+		printf( "ERROR!! NULL ADRESS LIST\n" );
 		return FALSE;
 	}
     char fname[ sizeof( "graph_tree.gv" ) + 3 ];
@@ -278,28 +337,8 @@ int TreeList_dump_dot( TreeList_t* tlist )
     FILE* out = fopen( fname, "w" );
     if ( out == NULL ) return FALSE;
     
-    fprintf( out, "digraph Tree\n{\n\tnode[shape = polygon]; edge[dir=both];\n" );
-    
-	TreeElem_t* elem = tlist->head;
+    fprintf( out, "digraph Tree\n{\n\tnode[shape = polygon];\n" );
 	
-	if ( elem->t == constant )
-		fprintf( out, "\t\"%lg\n[%X]\"\n",
-				elem->data, elem );
-	else if ( elem->t == val )
-	{
-		fprintf( out, "\t\"%s\n[%X]\"\n",
-		array_of_variable_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->data].name, elem );
-	}
-	else if ( elem->t == function && elem->right->t == val )
-	{
-		fprintf( out, "\t\"%s\n[%X]\"->\"%s\n[%X]\"\n",
-		array_of_funct_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->data].name, elem,
-		array_of_variable_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->right->data].name, elem->right );
-	}
-	else if ( elem->t == function && elem->right->t == constant )
-		fprintf( out, "\t\"%s\n[%X]\"->\"%lg\n[%X]\"\n",
-		array_of_funct_for_Tree_using_only_in_Diff_Tree[ ( int ) elem->data].name, elem,
-		elem->right->data, elem->right );
 	
 	
 	if ( TreeElem_dump_dot( tlist->head, out ) == FALSE )
@@ -318,7 +357,7 @@ int TreeList_dump_dot( TreeList_t* tlist )
             " -Tsvg -O %s", fname );
     system( com );
     char com1[20] = "";
-    sprintf( com1, "xdot %s", fname );
+    sprintf( com1, "xdot %s &", fname );
     system( com1 );
 	
 	
@@ -371,9 +410,9 @@ int Func_search( char* tmp )
 	if ( tmp == NULL ) return unformat;
 	
 	if ( !strcmp( tmp, "_sin" ) )
-		return sinus;
+		return _sinus;
 	else if ( !strcmp( tmp, "_cos" ) )
-		return cosinus;
+		return _cosinus;
 	else 
 		return unformat;
 }
@@ -433,6 +472,7 @@ int Var_search( const char* tmp )
 		if ( strcmp( pntr[i].name, tmp ) == 0 )
 			return i;
 	strncpy( pntr[i].name, tmp, MAXNAME );
+	arr_of_variable_cntr++;
 	return i;
 }
 
@@ -836,6 +876,26 @@ TreeElem_t* New_Tree_elem( const char* data, TreeElem_t* left, TreeElem_t* right
 	return tmp;
 }
 
+TreeElem_t* New_type( Tree_Type data, int type, TreeElem_t* left, TreeElem_t* right )
+{
+	
+	TreeElem_t* tmp = ( TreeElem_t* ) calloc( 1, sizeof( TreeElem_t ) );
+	tmp->cnra = CANARY;
+	tmp->cnrb = CANARY;
+	tmp->data = data;
+	tmp->t = type;
+	tmp->left = left;
+	tmp->right = right;
+	tmp->parent = tmp;
+	
+	if ( left != NULL )
+		left->parent = tmp;
+	if ( right != NULL )
+		right->parent = tmp;
+	
+	return tmp;
+}
+ 
 TreeElem_t* TreeElem_cpy( TreeElem_t* elem )
 {
 	if ( elem == NULL ) return NULL;
@@ -850,7 +910,7 @@ TreeElem_t* TreeElem_cpy( TreeElem_t* elem )
 	return tmpo;
 }
 
-#define _ New_Tree_elem
+//#define _ New_Tree_elem
 
 TreeElem_t* Diff_Tree( TreeElem_t* elem, const char* dval )
 {
@@ -878,9 +938,9 @@ TreeElem_t* Diff_Tree( TreeElem_t* elem, const char* dval )
 		
 		return New_Tree_elem( "*", New_Tree_elem( "*", R, New_Tree_elem( "^", L, tmpelem ) ), dL );
 	}
-	else if ( IS_FUNCT( sinus ) )
+	else if ( IS_FUNCT( _sinus ) )
 		return New_Tree_elem( "*", New_Tree_elem( "_cos", L, R ), dR );
-	else if ( IS_FUNCT( cosinus ) )
+	else if ( IS_FUNCT( _cosinus ) )
 		return New_Tree_elem( "*", New_Tree_elem( "_sin", L, R ), dR );
 	
 }
@@ -890,21 +950,102 @@ int Tree_Simpl( TreeElem_t* elem )
 	if ( elem == NULL ) return FALSE;
 	ASSERT_OK( TreeElem, elem );
 	
-	if ( elem->right != NULL && elem->right->t == oper ) 
-		Tree_Simpl( elem->right );
-	if ( elem->left != NULL && elem->left->t == oper )
+	if ( elem->left != NULL )
 		Tree_Simpl( elem->left );
+	if ( elem->right != NULL ) 
+		Tree_Simpl( elem->right );
 	
-	if ( (elem->t == oper) && (elem->right->t == constant)
+	Variable_t* arrp = array_of_variable_for_Tree_using_only_in_Diff_Tree; //это ахуенный код
+	
+	if ( elem->t == function && elem->data == in || elem->t == oper && elem->data == '=' )
+		arrp[ (int) elem->left->data ].use = TRUE;
+	else if ( elem->t == val && elem->parent->t == val || elem->t == val && elem->parent->t == myfunc )
+		arrp[(int) elem->data ].use = TRUE;
+	else if ( elem->t == separ && elem->left != NULL &&( elem->left->t == constant || elem->left->t == val ) && elem->parent != elem )
+	{
+		TreeElem_dump( elem );
+		if ( elem->right != NULL )
+		{
+			TreeElem_change_parent( elem, elem->right );
+			elem->right == NULL;
+			TreeElem_dtor_sub( elem->left );
+		}
+		else if ( elem->right == NULL )
+		{
+			elem->parent->right = NULL;
+			TreeElem_dtor_sub( elem->left );
+			
+		}
+		
+	}
+	else if ( elem->t == separ && ( elem->right == NULL || elem->left == NULL ) && elem->parent != elem )
+	{
+		if ( elem->right != NULL && elem->right->t == separ && elem->left == NULL)
+		{
+			TreeElem_change_parent( elem, elem->right );
+			elem->right == NULL;
+			TreeElem_dtor( elem );
+		}
+		else if ( elem->left != NULL && elem->left->t == separ && elem->right == NULL)
+		{
+			TreeElem_change_parent( elem, elem->left );
+			elem->left == NULL;
+			TreeElem_dtor( elem );
+		}
+		
+	}
+	else if ( (elem->t == oper) && (elem->right->t == constant)
 			&& (elem->left->t == constant) )
 	{
-		TreeElem_t* tmp = New_Tree_elem( "2", NULL, NULL );
+		TreeElem_t* tmp = New_Tree_elem( "0", NULL, NULL );
 		if ( IS_OPER( '+' ) ) ADD_DATA;
 		else if ( IS_OPER( '-' ) ) SUB_DATA;
 		else if ( IS_OPER( '*' ) ) MUL_DATA;
 		else if ( IS_OPER( '/' ) ) DIV_DATA;
+		else if ( IS_OPER( '^' ) ) POW_DATA;
 		
 		TreeElem_change_parent( elem, tmp );
+		
+		TreeElem_dtor_sub( elem );
+	}
+	else if ( IS_OPER( '=' ) && elem->left->t == val && arrp[(int) elem->left->data].use == FALSE )
+	{
+		arrp[(int) elem->left->data ].data = elem->right->data;
+	}
+	else if ( (elem->t == oper) &&((char) elem->data != '=') && (elem->right->t == constant) && (elem->left->t == val) && arrp[(int) elem->left->data].use == FALSE )
+	{
+		TreeElem_t* tmp = New_Tree_elem( "2", NULL, NULL );
+		if ( IS_OPER( '+' ) ) tmp->data = arrp[(int) elem->left->data ].data + elem->right->data;
+		else if ( IS_OPER( '-' ) ) tmp->data = arrp[(int) elem->left->data ].data - elem->right->data;
+		else if ( IS_OPER( '*' ) ) tmp->data = arrp[(int) elem->left->data ].data * elem->right->data;
+		else if ( IS_OPER( '/' ) ) tmp->data = arrp[(int) elem->left->data ].data / elem->right->data;
+		
+		TreeElem_change_parent( elem, tmp );
+		
+		TreeElem_dtor_sub( elem );
+	}
+	else if ( (elem->t == oper) && ((char) elem->data != '=') && (elem->left->t == constant) && (elem->right->t == val) && arrp[(int) elem->right->data].use == FALSE )
+	{
+		TreeElem_t* tmp = New_Tree_elem( "2", NULL, NULL );
+		if ( IS_OPER( '+' ) ) tmp->data = elem->left->data + arrp[(int) elem->right->data ].data;
+		else if ( IS_OPER( '-' ) ) tmp->data = elem->left->data - arrp[(int) elem->right->data ].data;
+		else if ( IS_OPER( '*' ) ) tmp->data = elem->left->data * arrp[(int) elem->right->data ].data;
+		else if ( IS_OPER( '/' ) ) tmp->data = elem->left->data / arrp[(int) elem->right->data ].data;
+		
+		TreeElem_change_parent( elem, tmp );
+		
+		TreeElem_dtor_sub( elem );
+	}
+	else if ( (elem->t == oper) && ((char) elem->data != '=') && (elem->left->t == val) && (elem->right->t == val) && arrp[(int) elem->left->data].use == FALSE )
+	{
+		TreeElem_t* tmp = New_Tree_elem( "2", NULL, NULL );
+		if ( IS_OPER( '+' ) ) tmp->data = arrp[(int) elem->left->data ].data + arrp[(int) elem->right->data ].data;
+		else if ( IS_OPER( '-' ) ) tmp->data = arrp[(int) elem->left->data ].data - arrp[(int) elem->right->data ].data;
+		else if ( IS_OPER( '*' ) ) tmp->data = arrp[(int) elem->left->data ].data * arrp[(int) elem->right->data ].data;
+		else if ( IS_OPER( '/' ) ) tmp->data = arrp[(int) elem->left->data ].data / arrp[(int) elem->right->data ].data;
+		else 
+		TreeElem_change_parent( elem, tmp );
+		
 		TreeElem_dtor_sub( elem );
 	}
 	else if ( IS_OPER( '*' ) )
@@ -956,5 +1097,7 @@ int Tree_Simpl( TreeElem_t* elem )
 			elem->left = NULL;
 			TreeElem_dtor_sub( elem );
 		}
+	
 	return TRUE;
 }
+

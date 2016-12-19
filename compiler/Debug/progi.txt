@@ -1,0 +1,9 @@
+var: rt q ;
+Great_Ilya!_Please_do_my_programm.
+	rt = q + 6 ^ 2 * ( 6 + 1 ) ;
+	q = rt / 2 ;
+	q ;
+	4 + 6 ;
+	out q + 5 ;
+	in q ;
+Thank_you_Ilya!_I_kiss_your_hands.

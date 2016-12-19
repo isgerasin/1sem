@@ -3,15 +3,26 @@
 #include <string.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define TRUE 1
 #define FALSE 0
 #define DBG 
 
+#define MAXFUNCT 100
 #define CANARY 0XABBAABBA
 #define MAXVAL 100
 #define MAXNAME 100
 #define TFORMAT "v2.0Trsv"
+
+#define IS_DVAL( elem ) ( (elem->t == val) && \
+		!strcmp( array_of_variable_for_Tree_using_only_in_Diff_Tree[(int) elem->data].name, dval ) )
+#define IS_OPER( operator ) ( ( elem->t == oper ) && \
+		( operator == ( char ) elem->data ) )
+#define IS_CONST( element, c ) ( ( (element)->t == constant ) && ((element)->data == c ) )
+#define IS_FUNCT( f ) ( ( elem->t == function ) && ( (int) elem->data == f ) )
+
+#define IS_NULL( pntr ) if ( !pntr ) return NULL
 
 
 #ifdef DBG
@@ -44,29 +55,32 @@ enum TypeElem_t
 	oper = 2,
 	val = 3,
 	function = 4,
-	ciycle = 5,
+	cycle = 5,
 	leftbrac = 6,
 	rightbrac = 7,
 	begin = 8,
 	end = 9,
 	endofprog = 10,
-	separ = 11
+	separ = 11,
+	ifel = 12,
+	admyfunc = 13,
+	myfunc = 14
 };
 
 enum TreeOper_t
 {
-	add = '+',
-	sub = '-',
-	mul = '*',
-	divv = '/',
-	pow = '^'
+	#define DEF_CMD( ttype, word, num, name ) name = num,
+	
+	#include "KeyWords.h"
+	max
+	#undef DEF_CMD
 };
 
 enum TreeFunct_t
 {
-	unformatf = 0,
-	sinus = 1,
-	cosinus = 2
+	_unformatf = 0,
+	_sinus = 1,
+	_cosinus = 2
 };
 
 struct TreeElem_t
@@ -93,9 +107,16 @@ struct Variable_t
 {
 	char name[MAXNAME];
 	double data;
+	char use;
 } typedef Variable_t;
 
 Variable_t array_of_variable_for_Tree_using_only_in_Diff_Tree[MAXVAL];
+
+TreeElem_t* arr_of_functions[MAXFUNCT];
+
+int arr_of_functions_cntr;
+
+int arr_of_variable_cntr;
 
 int File_Len( FILE* fl1 );
 
@@ -167,7 +188,30 @@ int Token_dump( Token* tokens, int size );
 
 int Is_var( const char* name );
 
-Token* Get_Tokens_From_File( const char* name )
+int Arr_of_Var_dump();
 
+Token* Get_Tokens_From_File( const char* name );
 
+TreeList_t* Get0( Token* ArrTok );
 
+TreeElem_t* GetOpMD( Token* ArrTok, int* i );
+
+TreeElem_t* GetOpSA( Token* ArrTok, int* i );
+
+TreeElem_t* GetBr( Token* ArrTok, int* i );
+
+TreeElem_t* GetN( Token* ArrTok, int* i );
+
+TreeElem_t* GetPow( Token* ArrTok, int* i );
+
+TreeElem_t* GetAssig( Token* ArrTok, int* i );
+
+TreeElem_t* GetStr( Token* ArrTok, int* i );
+
+TreeElem_t* GetFun( Token* ArrTok, int* i );
+
+TreeElem_t* GetPiec( Token* ArrTok, int* i );
+
+TreeElem_t* GetFoo( Token* ArrTok, int* i );
+
+TreeElem_t* GetAdFoo( Token* ArrTok, int* i );

@@ -3,15 +3,29 @@
 
 
 #define PBEGIN "Great_Ilya!_Please_do_my_programm."
-#define PEND "Thank_you_Ilya!_I_kiss_you_hands."
+#define PEND "Thank_you_Ilya!_I_kiss_your_hands."
 #define SEPARATION " \n\r\t,"
 
-#define IS_NULL( pntr ) if ( !pntr ) return NULL
+
+int Arr_of_Var_dump()
+{
+	printf( "------------------------------------------------------\n");
+	for ( int i = 0; i < MAXVAL; i++ )
+		printf( "\tvar [%d]\n"
+				"\t\t name = %s\n"
+				"\t\t data = %lg\n"
+				"\t\t use = %d\n",
+				i, array_of_variable_for_Tree_using_only_in_Diff_Tree[i].name,
+				array_of_variable_for_Tree_using_only_in_Diff_Tree[i].data, 
+				array_of_variable_for_Tree_using_only_in_Diff_Tree[i].use );
+	printf( "------------------------------------------------------\n");
+	return TRUE;
+}
 
 
 int Token_dump( Token* tokens, int size )
 {
-	printf( "======================\n" );
+	printf( "=================================\n" );
 	if ( tokens == NULL ) 
 		printf( "Error! Null adress\n" );
 	else
@@ -21,7 +35,7 @@ int Token_dump( Token* tokens, int size )
 				"\tData = %lg\n"
 				"\tString = %s\n",
 				i, tokens[i].type, tokens[i].data, tokens[i].str );
-	printf( "======================\n" );
+	printf( "=================================\n" );
 	
 	return 0;
 }
@@ -40,11 +54,20 @@ int Is_var( const char* name )
 	return FALSE;
 }
 
+int isnumber( const char* str )
+{
+	if ( str == NULL ) return FALSE;
+	char* s = str;
+	for ( s; *s != '\0'; s++ )
+		if ( !isdigit( *s ) )
+			return FALSE;
+	return TRUE;
+}
 
 Token* Get_Tokens_From_File( const char* name )
 {
 	IS_NULL( name );
-	
+	arr_of_variable_cntr = 0;
 	
 	FILE* input = fopen( name, "r" );
 	IS_NULL( input );
@@ -86,7 +109,7 @@ Token* Get_Tokens_From_File( const char* name )
 	}
 	p = strtok( NULL, SEPARATION );
 	
-	#define DEF_CMD( ttype, word, num ) if ( !strcmp( p, #word ) ){ \
+	#define DEF_CMD( ttype, word, num, name ) if ( !strcmp( p, word ) ){ \
 											TokArr[countoken].type = ttype; \
 											TokArr[countoken].str = p; \
 											TokArr[countoken++].data = num; } \
@@ -94,8 +117,13 @@ Token* Get_Tokens_From_File( const char* name )
 	
 	while ( p != NULL )
 	{
+		if ( !strcmp( p, "//" ) )
+		{
+			p = strtok( NULL, "\n\r" );
+			p = strtok( NULL,  SEPARATION );
+		}
 		#include "KeyWords.h"
-		if ( isdigit( *p ) )
+		if ( isnumber( p ) )
 		{
 			TokArr[countoken].data = atof( p );
 			TokArr[countoken].str = p;
@@ -114,17 +142,23 @@ Token* Get_Tokens_From_File( const char* name )
 			TokArr[countoken++].type = endofprog;
 			break;
 		}
+		else if ( p[strlen(p)-1] == '(' )
+		{
+			TokArr[countoken].data = myfunc;
+			TokArr[countoken].str = p;
+			TokArr[countoken++].type = myfunc;
+		}
 		else
 		{
 			printf( "Error at %s\n", p );
-			break;
-			//return NULL;
+			//break;
+			return NULL;
 		}
 		p = strtok( NULL, SEPARATION );
 	}
 	#undef DEF_CMD
 	
-	Token_dump( TokArr, 20 );
+	
 	
 	return TokArr;
 }

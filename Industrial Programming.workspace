@@ -20,6 +20,9 @@
   <Project Name="sh" Path="sh/sh.project" Active="No"/>
   <Project Name="wq" Path="wq/wq.project" Active="No"/>
   <Project Name="compiler" Path="compiler/compiler.project" Active="Yes"/>
+  <Project Name="Ilab1" Path="Ilab1/Ilab1.project" Active="No"/>
+  <Project Name="test" Path="test/test.project" Active="No"/>
+  <Project Name="test2" Path="test2/test2.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -44,6 +47,9 @@
       <Project Name="sh" ConfigName="Debug"/>
       <Project Name="wq" ConfigName="Debug"/>
       <Project Name="compiler" ConfigName="Debug"/>
+      <Project Name="Ilab1" ConfigName="Debug"/>
+      <Project Name="test" ConfigName="Debug"/>
+      <Project Name="test2" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -68,6 +74,9 @@
       <Project Name="sh" ConfigName="Release"/>
       <Project Name="wq" ConfigName="Release"/>
       <Project Name="compiler" ConfigName="Release"/>
+      <Project Name="Ilab1" ConfigName="Release"/>
+      <Project Name="test" ConfigName="Release"/>
+      <Project Name="test2" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

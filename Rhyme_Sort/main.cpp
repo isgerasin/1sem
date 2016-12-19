@@ -29,7 +29,9 @@ int Str_Rh_Cmp (char* str1, char* str2);
 
 int main(int argc, char **argv)
 {
+	
 	FILE* fl1 = fopen ("Shak.txt", "r");
+	
 	int len = File_Len (fl1);
 	char* buf= (char*) calloc(len+1, sizeof(*buf)); 
 	int strnum = Open_File (fl1, buf, len);
@@ -181,6 +183,7 @@ int Str_Sort (char* str[], int strnum, char Mode)
 	{
 		case 'm': Str_Sort_Max(str, strnum); break;
 		case 'b': Str_Sort_Bubble(str, strnum); break;
+		case 'q': qsort( str, strnum, sizeof( char* ), strcmp ); break;
 	}
 	return 0;
 }
@@ -273,6 +276,3 @@ int Cpy_Char (char* str[], char* strC[], int strnum)
 	return 0;
 }
 
-
-// qsort()
-//

@@ -1,8 +1,15 @@
-var: a , b , c ;
+var: a b c d ;
 Great_Ilya!_Please_do_my_programm.
-	b = 3 ;
-	a = 9 / b ;
-	c = a ;
-	out c ;
-Thank_you_Ilya!_I_kiss_you_hands.
-
+{	
+	in a ;
+	b = a + 4 ;
+	foo output( a )
+	{	
+		out a ;
+		ret a ;
+	}
+	d = output( b ) ;
+	
+	out a ;
+}
+Thank_you_Ilya!_I_kiss_your_hands.
